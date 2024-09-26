@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h2>Crear Cliente</h2>
+    <form>
+      <div class="mb-3">
+        <label for="codigoCliente" class="form-label">Código Cliente</label>
+        <input type="text" class="form-control" id="codigoCliente" placeholder="Ingresa el código del cliente" />
+      </div>
+      <div class="mb-3">
+        <label for="nombresCliente" class="form-label">Nombres Cliente</label>
+        <input type="text" class="form-control" id="nombresCliente" placeholder="Ingresa los nombres del cliente" />
+      </div>
+      <div class="mb-3">
+        <label for="apellidosCliente" class="form-label">Apellidos Cliente</label>
+        <input type="text" class="form-control" id="apellidosCliente" placeholder="Ingresa los apellidos del cliente" />
+      </div>
+      <div class="mb-3">
+        <label for="nitCliente" class="form-label">NIT</label>
+        <input type="text" class="form-control" id="nitCliente" placeholder="Ingresa el NIT del cliente" />
+      </div>
+      <div class="mb-3">
+        <label for="direccionCliente" class="form-label">Dirección Cliente</label>
+        <textarea class="form-control" id="direccionCliente" rows="3" placeholder="Ingresa la dirección del cliente"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="categoriaCliente" class="form-label">Categoría Cliente</label>
+        <select class="form-select" id="categoriaCliente">
+          <option selected>Selecciona la categoría</option>
+          <option value="1">Minorista</option>
+          <option value="2">Mayorista</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="estadoCliente" class="form-label">Estado Cliente</label>
+        <select class="form-select" id="estadoCliente">
+          <option selected>Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Crear Cliente</button>
+    </form>
+  </div>
