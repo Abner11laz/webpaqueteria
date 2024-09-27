@@ -1,41 +1,80 @@
 <div class="container mt-5">
-    <h2>Crear Cliente</h2>
-    <form>
-      <div class="mb-3">
-        <label for="codigoCliente" class="form-label">Código Cliente</label>
-        <input type="text" class="form-control" id="codigoCliente" placeholder="Ingresa el código del cliente" />
+  <h2>Crear Cliente</h2>
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit(clienteForm)">
+    
+    <div class="mb-3">
+      <label for="codigoCliente" class="form-label">Código Cliente</label>
+      <input type="text" class="form-control" id="codigoCliente" placeholder="Ingresa el código del cliente"
+             [(ngModel)]="cliente.codigo" name="codigo" required minlength="3" maxlength="10" #codigoCliente="ngModel" />
+      <div *ngIf="codigoCliente.invalid && codigoCliente.touched" class="text-danger">
+        <div *ngIf="codigoCliente.errors?.['required']">El código es obligatorio.</div>
+        <div *ngIf="codigoCliente.errors?.['minlength']">El código debe tener al menos 3 caracteres.</div>
+        <div *ngIf="codigoCliente.errors?.['maxlength']">El código no debe exceder los 10 caracteres.</div>
       </div>
-      <div class="mb-3">
-        <label for="nombresCliente" class="form-label">Nombres Cliente</label>
-        <input type="text" class="form-control" id="nombresCliente" placeholder="Ingresa los nombres del cliente" />
+    </div>
+
+    <div class="mb-3">
+      <label for="nombresCliente" class="form-label">Nombres Cliente</label>
+      <input type="text" class="form-control" id="nombresCliente" placeholder="Ingresa los nombres del cliente"
+             [(ngModel)]="cliente.nombres" name="nombres" required pattern="[A-Za-z\s]+" #nombresCliente="ngModel" />
+      <div *ngIf="nombresCliente.invalid && nombresCliente.touched" class="text-danger">
+        <div *ngIf="nombresCliente.errors?.['required']">Los nombres son obligatorios.</div>
+        <div *ngIf="nombresCliente.errors?.['pattern']">Solo se permiten letras y espacios.</div>
       </div>
-      <div class="mb-3">
-        <label for="apellidosCliente" class="form-label">Apellidos Cliente</label>
-        <input type="text" class="form-control" id="apellidosCliente" placeholder="Ingresa los apellidos del cliente" />
+    </div>
+
+    <div class="mb-3">
+      <label for="apellidosCliente" class="form-label">Apellidos Cliente</label>
+      <input type="text" class="form-control" id="apellidosCliente" placeholder="Ingresa los apellidos del cliente"
+             [(ngModel)]="cliente.apellidos" name="apellidos" required pattern="[A-Za-z\s]+" #apellidosCliente="ngModel" />
+      <div *ngIf="apellidosCliente.invalid && apellidosCliente.touched" class="text-danger">
+        <div *ngIf="apellidosCliente.errors?.['required']">Los apellidos son obligatorios.</div>
+        <div *ngIf="apellidosCliente.errors?.['pattern']">Solo se permiten letras y espacios.</div>
       </div>
-      <div class="mb-3">
-        <label for="nitCliente" class="form-label">NIT</label>
-        <input type="text" class="form-control" id="nitCliente" placeholder="Ingresa el NIT del cliente" />
+    </div>
+
+    <div class="mb-3">
+      <label for="nitCliente" class="form-label">NIT</label>
+      <input type="text" class="form-control" id="nitCliente" placeholder="Ingresa el NIT del cliente"
+             [(ngModel)]="cliente.nit" name="nit" required pattern="^\d{7,10}(-\d{1})?$" #nitCliente="ngModel" />
+      <div *ngIf="nitCliente.invalid && nitCliente.touched" class="text-danger">
+        <div *ngIf="nitCliente.errors?.['required']">El NIT es obligatorio.</div>
+        <div *ngIf="nitCliente.errors?.['pattern']">El NIT debe ser de 7 a 10 dígitos, con un formato opcional de guion.</div>
       </div>
-      <div class="mb-3">
-        <label for="direccionCliente" class="form-label">Dirección Cliente</label>
-        <textarea class="form-control" id="direccionCliente" rows="3" placeholder="Ingresa la dirección del cliente"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="direccionCliente" class="form-label">Dirección Cliente</label>
+      <textarea class="form-control" id="direccionCliente" rows="3" placeholder="Ingresa la dirección del cliente"
+                [(ngModel)]="cliente.direccion" name="direccion" required #direccionCliente="ngModel"></textarea>
+      <div *ngIf="direccionCliente.invalid && direccionCliente.touched" class="text-danger">
+        La dirección es obligatoria.
       </div>
-      <div class="mb-3">
-        <label for="categoriaCliente" class="form-label">Categoría Cliente</label>
-        <select class="form-select" id="categoriaCliente">
-          <option selected>Selecciona la categoría</option>
-          <option value="1">Minorista</option>
-          <option value="2">Mayorista</option>
-        </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="categoriaCliente" class="form-label">Categoría Cliente</label>
+      <select class="form-select" id="categoriaCliente" [(ngModel)]="cliente.categoria" name="categoria" required #categoriaCliente="ngModel">
+        <option value="" disabled selected>Selecciona la categoría</option>
+        <option value="1">Minorista</option>
+        <option value="2">Mayorista</option>
+      </select>
+      <div *ngIf="categoriaCliente.invalid && categoriaCliente.touched" class="text-danger">
+        Selecciona una categoría.
       </div>
-      <div class="mb-3">
-        <label for="estadoCliente" class="form-label">Estado Cliente</label>
-        <select class="form-select" id="estadoCliente">
-          <option selected>Activo</option>
-          <option value="0">Inactivo</option>
-        </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="estadoCliente" class="form-label">Estado Cliente</label>
+      <select class="form-select" id="estadoCliente" [(ngModel)]="cliente.estado" name="estado" required #estadoCliente="ngModel">
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+      </select>
+      <div *ngIf="estadoCliente.invalid && estadoCliente.touched" class="text-danger">
+        Selecciona el estado del cliente.
       </div>
-      <button type="submit" class="btn btn-primary">Crear Cliente</button>
-    </form>
-  </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="clienteForm.invalid">Crear Cliente</button>
+  </form>
+</div>
