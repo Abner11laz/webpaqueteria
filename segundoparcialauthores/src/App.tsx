@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import axios from 'axios';
+import {Blog} from './Interfaces';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [blogs, setBlogs] = React.useState<Blog[]>([]); 
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+
+  const fetchBlogs = () => {
+    setLoading(true); 
+    axios.get('/api/blog')
+      .then(response => {
+        setBlogs(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error al consumir la API:', error);
+        setLoading(false);
+      });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="contanier-fluid">
+      
+      <h1 className="text-center mb-4">Listado de Blogs</h1>
+
+     
+
+      <div className="row justify-content-center">
+        <div className="col-10">
+          <table className="table table-hover table-bordered table-striped text-center" style={{maxHeight: '400px', overflowY: 'auto'}}>
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Categoría</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blogs.length > 0 ? (
+                blogs.map(blog => (
+                  <tr key={blog.id}>
+                    <td>{blog.id}</td>
+                    <td>{blog.title}</td>
+                    <td>{blog.author}</td>
+                    <td>{blog.category}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={4} className="text-muted">
+                    No hay datos disponibles. Tiene que presionar "Consultar" para cargar los blogs.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          <div className="text-center mb-4">
+        <button className="btn btn-lg btn-primary" onClick={fetchBlogs}>
+          {loading ? (
+            <>
+              <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Cargando...
+            </>
+          ) : (
+            'Consultar'
+          )}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        </div>
+      </div>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
