@@ -5,6 +5,7 @@ import { SalesComponent } from './sales/sales.component';
 import { SalescreditmemoComponent } from './salescreditmemo/salescreditmemo.component';
 import { DeliverypackagesComponent } from './deliverypackages/deliverypackages.component';
 import { CrearClienteComponent } from './crear-cliente/crear-cliente.component';
+import { LayoutComponent } from './layout/layout.component';
 
 export const routes: Routes = [
   { path: 'clientes', component: ClientesComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'notas-credito', component: SalescreditmemoComponent },
   { path: 'entrega-paquetes', component: DeliverypackagesComponent },
   { path: 'crear-cliente', component: CrearClienteComponent },
+  {path: 'layout', component:LayoutComponent},
   { path: '', redirectTo: '/productos', pathMatch: 'full' },  // Redirección por defecto
   { path: '**', redirectTo: '/productos' }  // Redirección para rutas no encontradas
   
