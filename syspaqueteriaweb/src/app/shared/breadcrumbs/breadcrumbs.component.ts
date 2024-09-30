@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './breadcrumbs.component.css'
 })
 export class BreadcrumbsComponent {
+  activeTab: string = 'manage'; // La pestaña por defecto es 'manage'
 
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
+  }
 }
