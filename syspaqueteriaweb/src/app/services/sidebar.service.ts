@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BreadcrumbsService } from './breadcrumbs.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +16,10 @@ export class SidebarService {
         ]
       }
     ]
+
+    constructor(private ribbonService: BreadcrumbsService) {}
+
+    changeView(view: string) {
+      this.ribbonService.setView(view); // Cambia la vista seleccionada
+    }
 }

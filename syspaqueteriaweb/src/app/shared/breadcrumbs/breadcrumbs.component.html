@@ -29,7 +29,7 @@
 </style>
 
 <section class="content-header">
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf="currentView === 'Clientes'">
     <!-- Ribbon Tabs - Pestañas estilo Dynamics NAV -->
     <div class="row mb-3">
       <div class="col-12">
@@ -82,4 +82,61 @@
     <!-- Breadcrumbs -->
    
   </div><!-- /.container-fluid -->
+
+
+<!-- Productos -->
+
+  <div class="container-fluid" *ngIf="currentView === 'Productos'">
+    <!-- Ribbon Tabs - Pestañas estilo Dynamics NAV -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="ribbon">
+          <!-- Tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="activeTab === 'manage'" (click)="setActiveTab('manage')">Manage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="activeTab === 'inventory'" (click)="setActiveTab('inventory')">Inventory</a>
+            </li>
+          </ul>
+
+          <!-- Ribbon Options - Opciones dentro de las pestañas -->
+          <div class="ribbon-content mt-3">
+            <!-- Manage Tab Content -->
+            <div *ngIf="activeTab === 'manage'" class="ribbon-group">
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-box"></i> Ver Producto
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-edit"></i> Editar Producto
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-trash-alt"></i> Eliminar Producto
+              </button>
+          
+            </div>
+
+            <!-- Order Tab Content -->
+            <div *ngIf="activeTab === 'inventory'" class="ribbon-group">
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-boxes"></i> Gestionar Inventario
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-file-alt"></i> Unidades de Medida
+              </button>
+              <button class="btn btn-light btn-sm d-block">
+                <i class="fas fa-history"></i> Movimientos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+   
+  </div><!-- /.container-fluid -->
+
+
 </section>

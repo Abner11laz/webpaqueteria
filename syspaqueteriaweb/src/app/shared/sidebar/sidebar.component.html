@@ -36,7 +36,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item" *ngFor="let subMenu of item.submenu">
-                <a [routerLink]="subMenu.url" routerLinkActive="router-link-active"  href="../../index.html" style="cursor:pointer;" class="nav-link">
+                <a [routerLink]="subMenu.url" routerLinkActive="router-link-active" style="cursor:pointer;" class="nav-link" (click)="changeView(subMenu.titulo)">
                   <i class="{{subMenu.icono}}"></i>
                   <p class="m1-2"> {{subMenu.titulo}}</p>
                 </a>
