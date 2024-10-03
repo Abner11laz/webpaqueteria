@@ -5,7 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ProductsComponent } from './products/products.component';
-import { CustomersComponent } from './customers/customers.component';
+import { CustomersComponent } from './customers/components/home/customers.component';
 
 const routes: Routes=[
   {path: 'dashboard', component: PagesComponent,

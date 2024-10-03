@@ -6,7 +6,9 @@ import { ProductsComponent } from './products/products.component';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { CustomersComponent } from './customers/customers.component';
+import { CustomersComponent } from './customers/components/home/customers.component';
+import { CreateComponent } from './customers/create/create.component';
+import { CreateCustomerComponent } from './customers/components/create/create-customer/create-customer.component';
 
 
 
@@ -16,7 +18,9 @@ import { CustomersComponent } from './customers/customers.component';
     UsersComponent,
     ProductsComponent,
     PagesComponent,
-    CustomersComponent
+    CustomersComponent,
+    CreateComponent,
+    CreateCustomerComponent
   ],
   imports: [
     CommonModule,
