@@ -48,7 +48,7 @@
           <div class="ribbon-content mt-3">
             <!-- Manage Tab Content -->
             <div *ngIf="activeTab === 'manage'" class="ribbon-group">
-              <button class="btn btn-light btn-sm d-block mb-1">
+              <button class="btn btn-light btn-sm d-block mb-1" [routerLink]="['create-customer']">
                 <i class="fas fa-plus"></i> Crear Cliente
               </button>
               <button class="btn btn-light btn-sm d-block mb-1">

@@ -7,9 +7,7 @@ import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { CustomersComponent } from './customers/components/home/customers.component';
-import { CreateComponent } from './customers/create/create.component';
-import { CreateCustomerComponent } from './customers/components/create/create-customer/create-customer.component';
-
+import { CreateCustomerComponent } from './customers/components/create-customer/create-customer.component';
 
 
 @NgModule({
@@ -19,7 +17,6 @@ import { CreateCustomerComponent } from './customers/components/create/create-cu
     ProductsComponent,
     PagesComponent,
     CustomersComponent,
-    CreateComponent,
     CreateCustomerComponent
   ],
   imports: [
@@ -31,7 +28,8 @@ import { CreateCustomerComponent } from './customers/components/create/create-cu
     DashboardComponent,
     UsersComponent,
     ProductsComponent,
-    CustomersComponent
+    CustomersComponent,
+    CreateCustomerComponent
    
   ]
 })
