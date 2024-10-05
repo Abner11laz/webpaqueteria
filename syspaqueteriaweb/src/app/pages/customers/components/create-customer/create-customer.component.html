@@ -1,41 +1,167 @@
 <div class="container mt-4">
-    <h2>Crear Cliente</h2>
-    <form>
-      <div class="mb-3">
-        <label for="codigoCliente" class="form-label">Código Cliente</label>
-        <input type="text" class="form-control" id="codigoCliente" placeholder="Ingresa el código del cliente" />
-      </div>
-      <div class="mb-3">
-        <label for="nombresCliente" class="form-label">Nombres Cliente</label>
-        <input type="text" class="form-control" id="nombresCliente" placeholder="Ingresa los nombres del cliente" />
-      </div>
-      <div class="mb-3">
-        <label for="apellidosCliente" class="form-label">Apellidos Cliente</label>
-        <input type="text" class="form-control" id="apellidosCliente" placeholder="Ingresa los apellidos del cliente" />
-      </div>
-      <div class="mb-3">
-        <label for="nitCliente" class="form-label">NIT</label>
-        <input type="text" class="form-control" id="nitCliente" placeholder="Ingresa el NIT del cliente" />
-      </div>
-      <div class="mb-3">
-        <label for="direccionCliente" class="form-label">Dirección Cliente</label>
-        <textarea class="form-control" id="direccionCliente" rows="3" placeholder="Ingresa la dirección del cliente"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="categoriaCliente" class="form-label">Categoría Cliente</label>
-        <select class="form-select" id="categoriaCliente">
-          <option selected>Selecciona la categoría</option>
-          <option value="1">Minorista</option>
-          <option value="2">Mayorista</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="estadoCliente" class="form-label">Estado Cliente</label>
-        <select class="form-select" id="estadoCliente">
-          <option selected>Activo</option>
-          <option value="0">Inactivo</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Crear Cliente</button>
-    </form>
+  <div class="card">
+    <div class="card-header">
+      <h4>Customer Card</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- General Information -->
+          <div class="col-md-6">
+            <h5>General</h5>
+            <div class="form-group mb-3">
+              <label for="customerNo">No.</label>
+              <input
+                type="text"
+                id="customerNo"
+                formControlName="customerNo"
+                class="form-control"
+                placeholder="Enter customer number"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="nameBilling">Name (Billing)</label>
+              <input
+                type="text"
+                id="nameBilling"
+                formControlName="nameBilling"
+                class="form-control"
+                placeholder="Enter billing name"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="nameInternal">Name (Internal)</label>
+              <input
+                type="text"
+                id="nameInternal"
+                formControlName="nameInternal"
+                class="form-control"
+                placeholder="Enter internal name"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="nameTrading">Name (Trading As)</label>
+              <input
+                type="text"
+                id="nameTrading"
+                formControlName="nameTrading"
+                class="form-control"
+                placeholder="Enter trading name"
+              />
+            </div>
+          </div>
+
+          <!-- Billing Address -->
+          <div class="col-md-6">
+            <h5>Billing Address</h5>
+            <div class="form-group mb-3">
+              <label for="address">Address</label>
+              <input
+                type="text"
+                id="address"
+                formControlName="address"
+                class="form-control"
+                placeholder="Enter address"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="city">City</label>
+              <input
+                type="text"
+                id="city"
+                formControlName="city"
+                class="form-control"
+                placeholder="Enter city"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="postCode">Post Code</label>
+              <input
+                type="text"
+                id="postCode"
+                formControlName="postCode"
+                class="form-control"
+                placeholder="Enter post code"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="countryRegion">Country/Region Code</label>
+              <input
+                type="text"
+                id="countryRegion"
+                formControlName="countryRegion"
+                class="form-control"
+                placeholder="Enter country/region code"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Posting Setup -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <h5>Posting Setup</h5>
+            <div class="form-group mb-3">
+              <label for="genBusPostingGroup">Gen. Bus. Posting Group</label>
+              <input
+                type="text"
+                id="genBusPostingGroup"
+                formControlName="genBusPostingGroup"
+                class="form-control"
+                placeholder="Enter posting group"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="vatBusPostingGroup">VAT Bus. Posting Group</label>
+              <input
+                type="text"
+                id="vatBusPostingGroup"
+                formControlName="vatBusPostingGroup"
+                class="form-control"
+                placeholder="Enter VAT posting group"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h5>Additional Information</h5>
+            <div class="form-group mb-3">
+              <label for="vatRegistrationNo">VAT Registration No.</label>
+              <input
+                type="text"
+                id="vatRegistrationNo"
+                formControlName="vatRegistrationNo"
+                class="form-control"
+                placeholder="Enter VAT registration number"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="creditLimit">Credit Limit (LCY)</label>
+              <input
+                type="number"
+                id="creditLimit"
+                formControlName="creditLimit"
+                class="form-control"
+                placeholder="Enter credit limit"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-primary">Save Customer</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
