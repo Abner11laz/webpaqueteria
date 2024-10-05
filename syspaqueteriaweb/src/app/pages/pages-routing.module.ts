@@ -15,9 +15,15 @@ const routes: Routes=[
       {path:'users', component:UsersComponent},
       {path:'products', component:ProductsComponent},
       {path:'customers', component:CustomersComponent},
-      {path:'create-customer', component:CreateCustomerComponent}
+      
+      {path:'create-customer', component:CreateCustomerComponent,
+        children: [
+          { path: 'create-customer', component: CreateCustomerComponent } // Ruta hija de "customers"
+        ]
+      }
     ]
    },
+   
   
 ]
 
