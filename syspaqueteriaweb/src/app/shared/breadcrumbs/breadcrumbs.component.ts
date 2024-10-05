@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BreadcrumbsService } from '../../services/breadcrumbs.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 //import { Router } from 'express';
 
 @Component({
@@ -9,13 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './breadcrumbs.component.css'
 })
 export class BreadcrumbsComponent {
- 
+  showBreadcrumb: boolean = true; 
   currentView: string = 'Dashboard'; // Vista inicial
   activeTab: string = 'manage'; // Pestaña activa inicial
 
   constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router) {}
+  navigateToCreateCustomer() {
+    this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
+  }
 
   ngOnInit(): void {
+
     this.ribbonService.currentView$.subscribe(view => {
       this.currentView = view;
       console.log("Desde breadcrumbs component ts ->",view);
@@ -24,7 +29,19 @@ export class BreadcrumbsComponent {
      
 
     });
+    this.ribbonService.breadcrumbVisibility$.subscribe(visible=>{
+      this.showBreadcrumb = visible;
+      console.log("mostrar breadcrubs: ", this.showBreadcrumb);
+    });
 
+    
+/*
+    this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      this.showBreadcrumb = !this.router.url.includes('/dashboard/customers/create-customer');
+    });
+    */
    
   }
 

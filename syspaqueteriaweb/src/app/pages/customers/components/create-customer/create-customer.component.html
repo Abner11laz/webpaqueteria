@@ -1,164 +1,167 @@
-<div class="container mt-4">
+<div class="container mt-2">
   <div class="card">
-    <div class="card-header">
-      <h4>Customer Card</h4>
+    <div class="card-header py-2">
+      <h6 class="mb-0">Crear cliente</h6>
     </div>
-    <div class="card-body">
+    <div class="card-body p-3">
       <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <!-- General Information -->
           <div class="col-md-6">
-            <h5>General</h5>
-            <div class="form-group mb-3">
-              <label for="customerNo">No.</label>
+            <label>General</label>
+            <div class="form-group mb-2">
+              No.
               <input
                 type="text"
                 id="customerNo"
                 formControlName="customerNo"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter customer number"
               />
             </div>
 
-            <div class="form-group mb-3">
-              <label for="nameBilling">Name (Billing)</label>
+            <div class="form-group mb-2">
+              Nombre
               <input
                 type="text"
                 id="nameBilling"
                 formControlName="nameBilling"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter billing name"
               />
             </div>
 
-            <div class="form-group mb-3">
-              <label for="nameInternal">Name (Internal)</label>
-              <input
-                type="text"
-                id="nameInternal"
-                formControlName="nameInternal"
-                class="form-control"
-                placeholder="Enter internal name"
-              />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="nameTrading">Name (Trading As)</label>
+            <div class="form-group mb-2">
+              Nombre del comercio
               <input
                 type="text"
                 id="nameTrading"
                 formControlName="nameTrading"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter trading name"
+              />
+            </div>
+            <div class="form-group d-flex justify-content-between mb-2">
+              Bloqueado
+              <input
+                type="checkbox"
+                id="customerStatus"
+                formControlName="customerStatus"
+                class="ml-auto"
               />
             </div>
           </div>
 
           <!-- Billing Address -->
+        
+
           <div class="col-md-6">
-            <h5>Billing Address</h5>
-            <div class="form-group mb-3">
-              <label for="address">Address</label>
-              <input
-                type="text"
-                id="address"
-                formControlName="address"
-                class="form-control"
-                placeholder="Enter address"
-              />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="city">City</label>
-              <input
-                type="text"
-                id="city"
-                formControlName="city"
-                class="form-control"
-                placeholder="Enter city"
-              />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="postCode">Post Code</label>
-              <input
-                type="text"
-                id="postCode"
-                formControlName="postCode"
-                class="form-control"
-                placeholder="Enter post code"
-              />
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="countryRegion">Country/Region Code</label>
-              <input
-                type="text"
-                id="countryRegion"
-                formControlName="countryRegion"
-                class="form-control"
-                placeholder="Enter country/region code"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Posting Setup -->
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h5>Posting Setup</h5>
-            <div class="form-group mb-3">
-              <label for="genBusPostingGroup">Gen. Bus. Posting Group</label>
+            <label>Posting Setup</label>
+            <div class="form-group mb-2">
+              Gen. Bus. Posting Group
               <input
                 type="text"
                 id="genBusPostingGroup"
                 formControlName="genBusPostingGroup"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter posting group"
               />
             </div>
 
-            <div class="form-group mb-3">
-              <label for="vatBusPostingGroup">VAT Bus. Posting Group</label>
+            <div class="form-group mb-2">
+              VAT Bus. Posting Group
               <input
                 type="text"
                 id="vatBusPostingGroup"
                 formControlName="vatBusPostingGroup"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter VAT posting group"
               />
             </div>
           </div>
 
+
+        </div>
+
+        <!-- Posting Setup -->
+        <div class="row mt-3">
+        
           <div class="col-md-6">
-            <h5>Additional Information</h5>
-            <div class="form-group mb-3">
-              <label for="vatRegistrationNo">VAT Registration No.</label>
+            <label>Dirección de facturación</label>
+            <div class="form-group mb-2">
+             Direccion
+              <input
+                type="text"
+                id="customerAdress"
+                formControlName="address"
+                class="form-control form-control-sm"
+                placeholder="Enter address"
+              />
+            </div>
+
+            <div class="form-group mb-2">
+              Municipio
+              <input
+                type="text"
+                id="city"
+                formControlName="city"
+                class="form-control form-control-sm"
+                placeholder="Enter city"
+              />
+            </div>
+
+            <div class="form-group mb-2">
+             Código Postal
+              <input
+                type="text"
+                id="postCode"
+                formControlName="postCode"
+                class="form-control form-control-sm"
+                placeholder="Enter post code"
+              />
+            </div>
+
+            <div class="form-group mb-2">
+             Departamento
+              <input
+                type="text"
+                id="countryRegion"
+                formControlName="countryRegion"
+                class="form-control form-control-sm"
+                placeholder="Enter country/region code"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Información Adicional</label>
+            <div class="form-group mb-2">
+             NIT
               <input
                 type="text"
                 id="vatRegistrationNo"
                 formControlName="vatRegistrationNo"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter VAT registration number"
               />
             </div>
 
-            <div class="form-group mb-3">
-              <label for="creditLimit">Credit Limit (LCY)</label>
+            <div class="form-group mb-2">
+              Limite de credito
               <input
                 type="number"
                 id="creditLimit"
                 formControlName="creditLimit"
-                class="form-control"
+                class="form-control form-control-sm"
                 placeholder="Enter credit limit"
               />
             </div>
           </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-3">
           <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-primary">Save Customer</button>
+            <button type="submit" class="btn btn-sm btn-primary">Guardar cliente</button>
           </div>
         </div>
       </form>

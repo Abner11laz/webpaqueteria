@@ -6,9 +6,10 @@ import { ProductsComponent } from './products/products.component';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { CustomersComponent } from './customers/components/home/customers.component';
+import { CustomersComponent } from './customers/customers.component';
 import { CreateCustomerComponent } from './customers/components/create-customer/create-customer.component';
-import { ReactiveFormsModule } from '@angular/forms';  // Asegúrate de importar esto
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './customers/components/home/home.component';  // Asegúrate de importar esto
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';  // Asegúrate de importar
     ProductsComponent,
     PagesComponent,
     CustomersComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

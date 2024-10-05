@@ -5,8 +5,9 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ProductsComponent } from './products/products.component';
-import { CustomersComponent } from './customers/components/home/customers.component';
+import { CustomersComponent } from './customers/customers.component';
 import { CreateCustomerComponent } from './customers/components/create-customer/create-customer.component';
+import { HomeComponent } from './customers/components/home/home.component';
 
 const routes: Routes=[
   {path: 'dashboard', component: PagesComponent,
@@ -14,13 +15,12 @@ const routes: Routes=[
       {path:'',component: DashboardComponent},
       {path:'users', component:UsersComponent},
       {path:'products', component:ProductsComponent},
-      {path:'customers', component:CustomersComponent},
-      
-      {path:'create-customer', component:CreateCustomerComponent,
+      {path:'customers', component:CustomersComponent,
         children: [
-          { path: 'create-customer', component: CreateCustomerComponent } // Ruta hija de "customers"
+          { path: '', component: HomeComponent },
+          { path: 'create-customer', component: CreateCustomerComponent }
         ]
-      }
+      },
     ]
    },
    

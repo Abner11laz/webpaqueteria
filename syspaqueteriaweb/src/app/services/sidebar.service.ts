@@ -18,8 +18,8 @@ export class SidebarService {
     ]
 
     constructor(private ribbonService: BreadcrumbsService) {}
-
+//Se comento setView para verificar el funcionamiento de ocultar y mostrar el ribbon
     changeView(view: string) {
-      this.ribbonService.setView(view); // Cambia la vista seleccionada
+     this.ribbonService.setView(view); // Cambia la vista seleccionada
     }
 }
