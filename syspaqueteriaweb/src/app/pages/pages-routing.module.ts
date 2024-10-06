@@ -7,13 +7,20 @@ import { UsersComponent } from './users/users.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CreateCustomerComponent } from './customers/components/create-customer/create-customer.component';
+import { CreateUserComponent } from './users/components/create-user/create-user.component';
+import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { HomeComponent } from './customers/components/home/home.component';
 
 const routes: Routes=[
   {path: 'dashboard', component: PagesComponent,
     children:[
       {path:'',component: DashboardComponent},
-      {path:'users', component:UsersComponent},
+      {path:'users', component:UsersComponent,
+        children:[
+          {path: '', component:HomeUserComponent},
+          {path:'create-user', component:CreateUserComponent}
+        ]
+      },
       {path:'products', component:ProductsComponent},
       {path:'customers', component:CustomersComponent,
         children: [

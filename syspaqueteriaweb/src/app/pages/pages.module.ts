@@ -9,8 +9,10 @@ import { SharedModule } from '../shared/shared.module';
 import { CustomersComponent } from './customers/customers.component';
 import { CreateCustomerComponent } from './customers/components/create-customer/create-customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './customers/components/home/home.component';  // Asegúrate de importar esto
-
+import { HomeComponent } from './customers/components/home/home.component';
+import { CreateUserComponent } from './users/components/create-user/create-user.component';
+import { HomeUserComponent } from './users/components/home-user/home-user.component';  // Asegúrate de importar esto
+import { provideHttpClient, withFetch } from '@angular/common/http';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -19,13 +21,19 @@ import { HomeComponent } from './customers/components/home/home.component';  // 
     PagesComponent,
     CustomersComponent,
     CreateCustomerComponent,
-    HomeComponent
+    HomeComponent,
+    CreateUserComponent,
+    HomeUserComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+  ],
+  providers:[
+    provideHttpClient(withFetch())
   ],
   exports:[
     DashboardComponent,

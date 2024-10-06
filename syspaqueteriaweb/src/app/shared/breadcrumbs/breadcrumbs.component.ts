@@ -19,6 +19,10 @@ export class BreadcrumbsComponent {
     this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
   }
 
+  navigateToCreateUser(){
+    this.router.navigate(['./users/create-user'],{relativeTo: this.route})
+  }
+
   ngOnInit(): void {
 
     this.ribbonService.currentView$.subscribe(view => {
