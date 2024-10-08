@@ -14,9 +14,11 @@ export class LoginComponent {
 
  constructor(private authService: AuthService, private router: Router){}
 
- onSubmit(){
+ onSubmilogin(){
+  alert("hola");
   this.authService.login(this.correo, this.contraseña).subscribe({
     next: (response) => {
+      alert(response);
       if(response.usuarioID >0){
         this.router.navigate(['/Dashboard']);
 

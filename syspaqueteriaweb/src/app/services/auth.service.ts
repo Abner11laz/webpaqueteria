@@ -20,8 +20,10 @@ export class AuthService {
       contraseña: pass
     };
 
-    const headers = new HttpHeaders({'content-type':'application/json'});
+    console.log(body);
 
+    const headers = new HttpHeaders({'content-type':'application/json'});
+   
     return this.http.post<any>(this.apiUrl, body,{headers}).pipe(
       tap(response => {
         if(response.usuarioID >0){
@@ -32,6 +34,7 @@ export class AuthService {
   }
   private setSession(correo: string){
     localStorage.setItem('user',correo);
+    console.log("datos de sesión: ",localStorage.getItem('user'));
   }
   isLoggedIn(): boolean {
     return localStorage.getItem('user') !== null;

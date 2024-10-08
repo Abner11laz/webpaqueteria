@@ -9,7 +9,7 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Inicia sesión para ingresar al sistema</p>
   
-        <form (ngSubmit)="onSubmit()" method="post">
+        <form (ngSubmit)="onSubmilogin()" method="post">
           <div class="input-group mb-3">
             <input 
             type="email"
@@ -46,7 +46,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Iniciar</button>
+              <button type="button" (click)="onSubmilogin()" class="btn btn-primary btn-block">Iniciar</button>
             </div>
             <!-- /.col -->
           </div>
