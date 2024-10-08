@@ -1,6 +1,12 @@
+<style>
+  .selected {
+  background-color: lightblue;
+}
+</style>
+
 <div class="container-fluid mt-4">
-    <table class="table table-striped table-bordered">
-        <thead>
+    <table class="table table-bordered">
+        <thead >
           <tr>
             <th>#</th>
             <th>Nombre</th>
@@ -8,7 +14,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let users of users; let i = index">
+          <tr *ngFor="let users of users; let i = index"
+          [class.selected] = "users.id === selectedUser"
+          (click)="selectUser(users.id)">
             <td>{{ i + 1 }}</td>
             <td>{{ users.name }}</td>
             <td>{{ users.lastName }}</td>

@@ -10,9 +10,10 @@ import { CreateCustomerComponent } from './customers/components/create-customer/
 import { CreateUserComponent } from './users/components/create-user/create-user.component';
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { HomeComponent } from './customers/components/home/home.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes=[
-  {path: 'dashboard', component: PagesComponent,
+  {path: 'dashboard', component: PagesComponent,canActivate:[AuthGuard],
     children:[
       {path:'',component: DashboardComponent},
       {path:'users', component:UsersComponent,

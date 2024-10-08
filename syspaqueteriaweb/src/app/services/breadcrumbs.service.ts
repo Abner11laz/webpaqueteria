@@ -19,4 +19,11 @@ export class BreadcrumbsService {
       this.breadcrumbVisibilitySource.next(isVisible);
       console.log("es visible el ribbon: ",isVisible)
     }
+
+    private selectedUserSource = new BehaviorSubject<number>(0);
+    selectedUser$ = this.selectedUserSource.asObservable();
+
+    setSelectedUser(user:number){
+      this.selectedUserSource.next(user);
+    }
 }

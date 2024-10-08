@@ -13,7 +13,7 @@ export class BreadcrumbsComponent {
   showBreadcrumb: boolean = true; 
   currentView: string = 'Dashboard'; // Vista inicial
   activeTab: string = 'manage'; // Pestaña activa inicial
-
+  selectedUser: number=0;
   constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router) {}
   navigateToCreateCustomer() {
     this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
@@ -38,7 +38,10 @@ export class BreadcrumbsComponent {
       console.log("mostrar breadcrubs: ", this.showBreadcrumb);
     });
 
-    
+    this.ribbonService.selectedUser$.subscribe(user => {
+      this.selectedUser = user;
+      console.log("Usuario desde breadcrumbs component: ", user);
+    })
 /*
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
@@ -48,7 +51,11 @@ export class BreadcrumbsComponent {
     */
    
   }
-
+  editarProducto(){
+    if(this.selectedUser>0){
+      console.log('Editando usuario: ', this.selectedUser);
+    }
+  }
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
