@@ -14,17 +14,13 @@ export class AuthService {
 
   constructor(private http:HttpClient, private router: Router) { }
 
-  login(correo: string, pass: string): Observable<any>{
-    const body = {
-      correo: correo,
-      contraseña: pass
-    };
-
-    console.log(body);
+  login(logData:any): Observable<any>{
+    
+    console.log(logData);
 
     const headers = new HttpHeaders({'content-type':'application/json'});
    
-    return this.http.post<any>(this.apiUrl, body,{headers}).pipe(
+    return this.http.post<any>(this.apiUrl, logData,{headers}).pipe(
       tap(response => {
         if(response.usuarioID >0){
           this.setSession(response.correo);
@@ -33,15 +29,29 @@ export class AuthService {
     );
   }
   private setSession(correo: string){
-    localStorage.setItem('user',correo);
-    console.log("datos de sesión: ",localStorage.getItem('user'));
+    const now = new Date();
+    console.log("time is: ", now.getTime());
+  now.setTime(now.getTime() + (5 *60*1000)); 
+    const expira = "expires=" + now.toUTCString();
+  document.cookie = `usuario=${correo}; ${expira}; path=/`;
+
+  console.log("Cookie creada: ", document.cookie);
   }
   isLoggedIn(): boolean {
-    return localStorage.getItem('user') !== null;
+    const cookie = this.getCookie('usuario');
+    return cookie !== null;
+  }
+  private getCookie(name: string): string | null {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
   }
   logout() {
-    localStorage.removeItem('user');
+    this.deleteCookie('usuario');
     this.router.navigate(['/login']);
+  }
+  
+  private deleteCookie(name: string) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
 
 }
