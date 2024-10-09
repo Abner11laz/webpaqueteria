@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
+import { UserService } from '../../../../services/user.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-home-user',
@@ -8,15 +10,19 @@ import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
 })
 export class HomeUserComponent implements OnInit {
 
-  constructor(private ribbonService: BreadcrumbsService){}
+  users:any[] =[];
+  constructor(private ribbonService: BreadcrumbsService, private userService: UserService){}
   ngOnInit(): void {
     this.ribbonService.setBreadcrumbVisibility(true);
+    this.userService.getUser().subscribe((data)=>{
+      this.users = data;
+    },
+  (error) => {
+    console.log('error al obtener datos',error);
+  });
   }
 selectedUser: any = null;
-  users = [
-    {id:1, name:'Abner', lastName: 'Ruano', email:'aruanol@miumg.edu.gt', rol:'Admin'},
-     {id:2, name:'Jonhatan', lastName: 'Ixchen', email:'jixchen@miumg.edu.gt', rol:'Admin'}
-  ];
+ 
 
     selectUser(user:any){
       this.selectedUser  = user;

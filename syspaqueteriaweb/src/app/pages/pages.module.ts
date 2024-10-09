@@ -11,7 +11,7 @@ import { CreateCustomerComponent } from './customers/components/create-customer/
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './customers/components/home/home.component';
 import { CreateUserComponent } from './users/components/create-user/create-user.component';
-import { HomeUserComponent } from './users/components/home-user/home-user.component';  // Asegúrate de importar esto
+import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 @NgModule({
   declarations: [

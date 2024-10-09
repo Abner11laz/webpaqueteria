@@ -14,14 +14,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let users of users; let i = index"
-          [class.selected] = "users.id === selectedUser"
-          (click)="selectUser(users.id)">
+          <tr *ngFor="let user of users; let i = index"
+          [class.selected] = "user.id === selectedUser"
+          (click)="selectUser(user.id)">
             <td>{{ i + 1 }}</td>
-            <td>{{ users.name }}</td>
-            <td>{{ users.lastName }}</td>
-            <td>{{ users.email }}</td>
-            <td>{{ users.rol }}</td>
+            <td>{{ user.usuarioID }}</td>
+            <td>{{ user.correo }}</td>
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.apellido }}</td>
           </tr>
         </tbody>
     </table>
