@@ -24,7 +24,7 @@ export class BreadcrumbsComponent {
   }
 
   ngOnInit(): void {
-
+    this.ribbonService.setBreadcrumbVisibility(false);
     this.ribbonService.currentView$.subscribe(view => {
       this.currentView = view;
       console.log("Desde breadcrumbs component ts ->",view);

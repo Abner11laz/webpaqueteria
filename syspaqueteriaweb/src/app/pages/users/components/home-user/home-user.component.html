@@ -15,8 +15,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users; let i = index"
-          [class.selected] = "user.id === selectedUser"
-          (click)="selectUser(user.id)">
+          [class.selected] = "user.usuarioID === selectedUser"
+          (click)="selectUser(user.usuarioID)">
             <td>{{ i + 1 }}</td>
             <td>{{ user.usuarioID }}</td>
             <td>{{ user.correo }}</td>
