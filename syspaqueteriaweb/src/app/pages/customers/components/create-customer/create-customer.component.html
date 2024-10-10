@@ -9,7 +9,7 @@
           <!-- General Information -->
           <div class="col-md-6">
             <label>General</label>
-            <div class="form-group mb-3">
+           <!-- <div class="form-group mb-3">
               No.
               <input
                 type="text"
@@ -18,37 +18,37 @@
                 class="form-control form-control-sm"
                 placeholder="Enter customer number"
               />
-            </div>
+            </div>-->
 
             <div class="form-group mb-3">
               Nombre
               <input
                 type="text"
-                id="nameBilling"
-                formControlName="nameBilling"
+                id="nombresCliente"
+                formControlName="nombresCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter billing name"
+                placeholder="Ingrese los nombres del cliente"
               />
             </div>
 
             <div class="form-group mb-3">
-              Nombre del comercio
+              Apellidos del cliente
               <input
                 type="text"
-                id="nameTrading"
-                formControlName="nameTrading"
+                id="apellidosCliente"
+                formControlName="apellidosCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter trading name"
+                placeholder="Ingrese apellidos del cliente"
               />
             </div>
-            <div class="form-group d-flex justify-content-between mb-3">
-              Bloqueado
-              <input
-                type="checkbox"
-                id="customerStatus"
-                formControlName="customerStatus"
-                class="ml-auto"
-              />
+            <div class="form-group mb-3">
+              Estado del cliente
+              <select id="estadoCliente" formControlName="estadoCliente" class="form-control form-control-sm">
+                <option value="0" disabled selected></option>
+                <option value="CV">Vigente</option>
+                <option value="NV">No vigente</option>
+                
+              </select>
             </div>
           </div>
 
@@ -56,26 +56,26 @@
         
 
           <div class="col-md-6">
-            <label>Posting Setup</label>
+           <label>Datos de Contacto</label>
             <div class="form-group mb-3">
-              Gen. Bus. Posting Group
+              Telefono
               <input
-                type="text"
-                id="genBusPostingGroup"
-                formControlName="genBusPostingGroup"
+                type="number"
+                id="telefonoCliente"
+                formControlName="telefonoCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter posting group"
+                placeholder="Ingrese número de contacto"
               />
             </div>
 
             <div class="form-group mb-3">
-              VAT Bus. Posting Group
+              Correo
               <input
                 type="text"
-                id="vatBusPostingGroup"
-                formControlName="vatBusPostingGroup"
+                id="correoCliente"
+                formControlName="correoCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter VAT posting group"
+                placeholder="ejemplo@me.com"
               />
             </div>
           </div>
@@ -92,10 +92,10 @@
              Direccion
               <input
                 type="text"
-                id="customerAdress"
-                formControlName="address"
+                id="direccionCliente"
+                formControlName="direccionCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter address"
+                placeholder="Ingrese Dirección"
               />
             </div>
 
@@ -103,10 +103,10 @@
               Municipio
               <input
                 type="text"
-                id="city"
-                formControlName="city"
+                id="municipio"
+                formControlName="municipio"
                 class="form-control form-control-sm"
-                placeholder="Enter city"
+                placeholder="Ingrese municipio"
               />
             </div>
 
@@ -117,7 +117,7 @@
                 id="postCode"
                 formControlName="postCode"
                 class="form-control form-control-sm"
-                placeholder="Enter post code"
+                placeholder="Ingrese el código postal"
               />
             </div>
 
@@ -125,10 +125,10 @@
              Departamento
               <input
                 type="text"
-                id="countryRegion"
-                formControlName="countryRegion"
+                id="departamento"
+                formControlName="departamento"
                 class="form-control form-control-sm"
-                placeholder="Enter country/region code"
+                placeholder="Ingrese Departamento"
               />
             </div>
           </div>
@@ -139,13 +139,21 @@
              NIT
               <input
                 type="text"
-                id="vatRegistrationNo"
-                formControlName="vatRegistrationNo"
+                id="nIT"
+                formControlName="nIT"
                 class="form-control form-control-sm"
-                placeholder="Enter VAT registration number"
+                placeholder="Número de NIT"
               />
             </div>
-
+            <div class="form-group mb-3">
+              Tipo de cliente
+              <select id="categoriaCliente" formControlName="categoriaCliente" class="form-control form-control-sm">
+                <option value="0" disabled selected>Selecciona una clasificación</option>
+                <option value="1">Mayorista</option>
+                <option value="2">Minorista</option>
+              </select>
+            </div>
+<!-- considerar dejar este campo por si nos da tiempo programar la logica para aceptar credito
             <div class="form-group mb-3">
               Limite de credito
               <input
@@ -155,7 +163,7 @@
                 class="form-control form-control-sm"
                 placeholder="Enter credit limit"
               />
-            </div>
+            </div>-->
           </div>
         </div>
 
