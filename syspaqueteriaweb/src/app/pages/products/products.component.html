@@ -1,1 +1,29 @@
-<p>products works!</p>
+<style>
+    .selected {
+    background-color: lightblue;
+  }
+  </style>
+  
+  <div class="container-fluid mt-4">
+      <table class="table table-bordered">
+          <thead >
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Emailddd</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productsData; let i = index"
+            [class.selected] = "producto.id === selectedUser"
+            (click)="selectUser(producto.id)">
+              <td>{{ i + 1 }}</td>
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.Name }}</td>
+              <td>{{ producto.price }}</td>
+              <td>{{ producto.stock }}</td>
+            </tr>
+          </tbody>
+      </table>
+      
+    </div>

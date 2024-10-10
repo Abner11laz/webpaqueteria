@@ -16,14 +16,14 @@ const routes: Routes=[
   {path: 'dashboard', component: PagesComponent,canActivate:[AuthGuard],
     children:[
       {path:'',component: DashboardComponent},
-      {path:'users', component:UsersComponent,
+      {path:'users', component:UsersComponent,canActivate:[AuthGuard],
         children:[
           {path: '', component:HomeUserComponent},
           {path:'create-user', component:CreateUserComponent}
         ]
       },
-      {path:'products', component:ProductsComponent},
-      {path:'customers', component:CustomersComponent,
+      {path:'products', component:ProductsComponent,canActivate:[AuthGuard]},
+      {path:'customers', component:CustomersComponent,canActivate:[AuthGuard],
         children: [
           { path: '', component: HomeComponent },
           { path: 'create-customer', component: CreateCustomerComponent }
