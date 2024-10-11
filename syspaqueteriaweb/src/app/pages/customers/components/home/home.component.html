@@ -31,15 +31,20 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Nombre</th>
-            <th>Email</th>
+            <th>Código de cliente</th>
+            <th>Nombre de cliente</th>
+            <th>Apellido de cliente</th>
+            <th>NIT</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cliente of clientes; let i = index" (click)="showDetails(cliente.id)">
             <td>{{ i + 1 }}</td>
-            <td>{{ cliente.name }}</td>
-            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.codigoCliente }}</td>
+            <td>{{ cliente.nombresCliente }}</td>
+            <td>{{ cliente.apellidosCliente }}</td>
+            <td>{{ cliente.nit }}</td>
+            
           </tr>
         </tbody>
       </table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
+import { CustomerService } from '../../../../services/customer.service';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,19 @@ import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
+  clientes:any[]=[];
 
-  constructor(private breadCrumbService: BreadcrumbsService){}
+  constructor(private breadCrumbService: BreadcrumbsService, private customerService:CustomerService){}
   ngOnInit(): void {
     this.breadCrumbService.setBreadcrumbVisibility(true);
+    this.customerService.getCustomers().subscribe((response)=>{
+      this.clientes = response;
+    },
+  (error)=>{
+    console.log("error: ", error);
+  });
   }
 
-  
-
-  clientes=[
-    { id: 1, name: 'Juan Perez', email: 'juanperez@example.com', phone: '555-1234', invoices: 5, openOrders: 2, cancellations: 1 },
-    { id: 2, name: 'Maria Gomez', email: 'mariagomez@example.com', phone: '555-5678', invoices: 10, openOrders: 3, cancellations: 0 }
-  ];
 
   selectedCustomer: any = null;
   asideVisible = false;
