@@ -60,7 +60,7 @@
             <div class="form-group mb-3">
               Telefono
               <input
-                type="number"
+                type="text"
                 id="telefonoCliente"
                 formControlName="telefonoCliente"
                 class="form-control form-control-sm"
@@ -101,13 +101,13 @@
 
             <div class="form-group mb-3">
               Municipio
-              <input
-                type="text"
-                id="municipio"
-                formControlName="municipio"
-                class="form-control form-control-sm"
-                placeholder="Ingrese municipio"
-              />
+              <select id="municipio" formControlName="municipio" class="form-control form-control-sm">
+                <option value="0" disabled  selected>[SELECCIONA UN MUNICIPIO]</option>
+                <option value="0101">Villa Nueva</option>
+                <option value="0102">Zona 01</option>
+                <option value="0103">San Jose Villa Nueva</option>
+          
+              </select>
             </div>
 
             <div class="form-group mb-3">
@@ -123,13 +123,17 @@
 
             <div class="form-group mb-3">
              Departamento
-              <input
-                type="text"
-                id="departamento"
-                formControlName="departamento"
-                class="form-control form-control-sm"
-                placeholder="Ingrese Departamento"
-              />
+             <select id="departamento" formControlName="departamento" class="form-control form-control-sm">
+              <option value="0" disabled  selected>[SELECCIONA UN DEPARTAMENTO]</option>
+              <option value="01">Guatemala</option>
+              <option value="02">Chiquimula</option>
+              <option value="04">Jalapa</option>
+              <option value="05">Jutiapa</option>
+              <option value="06">Santa Rosa</option>
+            </select>
+
+
+             
             </div>
           </div>
 
@@ -149,9 +153,21 @@
               Tipo de cliente
               <select id="categoriaCliente" formControlName="categoriaCliente" class="form-control form-control-sm">
                 <option value="0" disabled selected>Selecciona una clasificación</option>
-                <option value="1">Mayorista</option>
-                <option value="2">Minorista</option>
+                <option value="Mayorista">Mayorista</option>
+                <option value="Minorista">Minorista</option>
               </select>
+            </div>
+
+            <div class="form-group mb-3">
+              Acción
+              <select id="accion" formControlName="accion" class="form-control form-control-sm">
+                  <option value="0" disabled  selected>[SELECCIONA UN PERFIL]</option>
+                  <option value="C R U D">CREATE READ UPDATE DELETE</option>
+                  <option value="R">READ</option>
+                  <option value="C">CREATE</option>
+                  <option value="U">UPDATE</option>
+                  <option value="D">DELETE</option>
+                </select>
             </div>
 <!-- considerar dejar este campo por si nos da tiempo programar la logica para aceptar credito
             <div class="form-group mb-3">

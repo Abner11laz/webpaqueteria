@@ -14,6 +14,9 @@ export class CustomerService {
     return this.httpClient.get(`${this.baseUriApi}/listar-todo`);
   }
 
+
+ 
+
   setCustomer(customerData:any):Observable<any>{
     return this.httpClient.post(`${this.baseUriApi}/crud`,customerData);
 
