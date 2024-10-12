@@ -9,15 +9,18 @@ import { CustomerService } from '../../../../services/customer.service';
 })
 export class HomeComponent implements OnInit{
   clientes:any[]=[];
-
+  notisLoading:boolean = false;
   constructor(private breadCrumbService: BreadcrumbsService, private customerService:CustomerService){}
+  
   ngOnInit(): void {
     this.breadCrumbService.setBreadcrumbVisibility(true);
     this.customerService.getCustomers().subscribe((response)=>{
       this.clientes = response;
+      this.notisLoading = true;
     },
   (error)=>{
     console.log("error: ", error);
+    this.notisLoading = true;
   });
   }
 
