@@ -1,0 +1,211 @@
+<div class="container-fluid mt-2">
+    <div class="card">
+      <div class="card-header py-2">
+        <h2 class="mb-4">Editar Cliente - <b style="color:skyblue" > {{customerNo}} </b></h2>
+      </div>
+      <div class="card-body p-3">
+        <form [formGroup]="customereditForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <!-- General Information -->
+            <div class="col-md-6">
+              <label>General</label>
+             <!-- <div class="form-group mb-3">
+                No.
+                <input
+                  type="text"
+                  id="customerNo"
+                  formControlName="customerNo"
+                  class="form-control form-control-sm"
+                  placeholder="Enter customer number"
+                />
+              </div>-->
+  
+              <div class="form-group mb-3">
+                Nombre
+                <input
+                  type="text"
+                  id="nombresCliente"
+                  formControlName="nombresCliente"
+                  class="form-control form-control-sm"
+                  placeholder="Ingrese los nombres del cliente"
+                />
+                <div *ngIf="customereditForm.get('nombresCliente')?.invalid && customereditForm.get('nombresCliente')?.touched">
+                  <small>El nombre es obligatorio.</small>
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                Apellidos del cliente
+                <input
+                  type="text"
+                  id="apellidosCliente"
+                  formControlName="apellidosCliente"
+                  class="form-control form-control-sm"
+                  placeholder="Ingrese apellidos del cliente"
+                />
+                <div *ngIf="customereditForm.get('apellidosCliente')?.invalid && customereditForm.get('apellidosCliente')?.touched">
+                  <small>El apellido es obligatorio.</small>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                Estado del cliente
+                <select id="estadoCliente" formControlName="estadoCliente" class="form-control form-control-sm">
+                  <option value="0" disabled selected></option>
+                  <option value="CV">Vigente</option>
+                  <option value="NV">No vigente</option>
+                  
+                </select>
+              </div>
+            </div>
+  
+            <!-- Billing Address -->
+          
+  
+            <div class="col-md-6">
+             <label>Datos de Contacto</label>
+              <div class="form-group mb-3">
+                Telefono
+                <input
+                  type="text"
+                  id="telefonoCliente"
+                  formControlName="telefonoCliente"
+                  class="form-control form-control-sm"
+                  placeholder="Ingrese número de contacto"
+                />
+              </div>
+  
+              <div class="form-group mb-3">
+                Correo
+                <input
+                  type="text"
+                  id="correoCliente"
+                  formControlName="correoCliente"
+                  class="form-control form-control-sm"
+                  placeholder="ejemplo@me.com"
+                />
+              </div>
+            </div>
+  
+  
+          </div>
+  
+          <!-- Posting Setup -->
+          <div class="row mt-3">
+          
+            <div class="col-md-6">
+              <label>Dirección de facturación</label>
+              <div class="form-group mb-3">
+               Direccion
+                <input
+                  type="text"
+                  id="direccionCliente"
+                  formControlName="direccionCliente"
+                  class="form-control form-control-sm"
+                  placeholder="Ingrese Dirección"
+                />
+                <div *ngIf="customereditForm.get('direccionCliente')?.invalid && customereditForm.get('direccionCliente')?.touched">
+                  <small>La dirección es obligatoria.</small>
+                </div>
+              </div>
+  
+              <div class="form-group mb-3">
+                Municipio
+                <select id="municipio" formControlName="municipio" class="form-control form-control-sm">
+                  <option value="0" disabled  selected>[SELECCIONA UN MUNICIPIO]</option>
+                  <option value="0101">Villa Nueva</option>
+                  <option value="0102">Zona 01</option>
+                  <option value="0103">San Jose Villa Nueva</option>
+            
+                </select>
+                <div *ngIf="customereditForm.get('municipio')?.invalid && customereditForm.get('municipio')?.touched">
+                  <small>El municipio es obligatorio.</small>
+                </div>
+              </div>
+  <!--
+              <div class="form-group mb-3">
+               Código Postal
+                <input
+                  type="text"
+                  id="postCode"
+                  formControlName="postCode"
+                  class="form-control form-control-sm"
+                  placeholder="Ingrese el código postal"
+                />
+              </div>-->
+  
+              <div class="form-group mb-3">
+               Departamento
+               <select id="departamento" formControlName="departamento" class="form-control form-control-sm">
+                <option value="0" disabled  selected>[SELECCIONA UN DEPARTAMENTO]</option>
+                <option value="01">Guatemala</option>
+                <option value="02">Chiquimula</option>
+                <option value="04">Jalapa</option>
+                <option value="05">Jutiapa</option>
+                <option value="06">Santa Rosa</option>
+              </select>
+              <div *ngIf="customereditForm.get('departamento')?.invalid && customereditForm.get('departamento')?.touched">
+                <small>El departamento es obligatorio.</small>
+              </div>
+  
+               
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <label>Información Adicional</label>
+              <div class="form-group mb-3">
+               NIT
+                <input
+                  type="text"
+                  id="nit"
+                  formControlName="nit"
+                  class="form-control form-control-sm"
+                  placeholder="Número de NIT"
+                />
+                <div *ngIf="customereditForm.get('nit')?.invalid && customereditForm.get('nit')?.touched">
+                  <small>El NIT es obligatorio.</small>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                Tipo de cliente
+                <select id="categoriaCliente" formControlName="categoriaCliente" class="form-control form-control-sm">
+                  <option value="0" disabled selected>Selecciona una clasificación</option>
+                  <option value="Mayorista">Mayorista</option>
+                  <option value="Minorista">Minorista</option>
+                </select>
+              </div>
+  
+              <div class="form-group mb-3">
+                Acción
+                <select id="accion" formControlName="accion" class="form-control form-control-sm">
+                    <option value="0" disabled  selected>[SELECCIONA UN PERFIL]</option>
+                    <option value="C R U D">CREATE READ UPDATE DELETE</option>
+                    <option value="R">READ</option>
+                    <option value="C">CREATE</option>
+                    <option value="U">UPDATE</option>
+                    <option value="D">DELETE</option>
+                  </select>
+              </div>
+  <!-- considerar dejar este campo por si nos da tiempo programar la logica para aceptar credito
+              <div class="form-group mb-3">
+                Limite de credito
+                <input
+                  type="number"
+                  id="creditLimit"
+                  formControlName="creditLimit"
+                  class="form-control form-control-sm"
+                  placeholder="Enter credit limit"
+                />
+              </div>-->
+            </div>
+          </div>
+  
+          <div class="row mt-3">
+            <div class="col-md-12 text-right">
+              <button type="submit" class="btn btn-sm btn-primary">Guardar cliente</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

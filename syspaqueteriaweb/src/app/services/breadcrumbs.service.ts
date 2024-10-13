@@ -26,4 +26,11 @@ export class BreadcrumbsService {
     setSelectedUser(user:number){
       this.selectedUserSource.next(user);
     }
+
+    private custselectedSource = new BehaviorSubject<number>(0);
+    custSelected$ = this.custselectedSource.asObservable();
+
+    setselectedCust(cusId:number){
+      this.custselectedSource.next(cusId);
+    }
 }

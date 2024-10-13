@@ -21,4 +21,9 @@ export class CustomerService {
     return this.httpClient.post(`${this.baseUriApi}/crud`,customerData);
 
   }
+
+  searchCus(cusId:number):Observable<any>{
+
+    return this.httpClient.get(`${this.baseUriApi}/leer/${cusId}`)
+  }
 }

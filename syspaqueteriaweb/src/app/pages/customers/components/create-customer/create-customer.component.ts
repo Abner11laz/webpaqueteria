@@ -42,9 +42,12 @@ export class CreateCustomerComponent implements OnInit {
 
       if(this.customerForm.valid){
         const customerdataForm = this.customerForm.value;
-        this.customerService.setCustomer(customerdataForm).subscribe((response)=>{
-          console.log("Cliente registrado con exito");
-          this.router.navigate(['dashboard/customers']);
+        this.customerService.setCustomer(customerdataForm).subscribe((response:any)=>{
+        
+            console.log("Cliente registrado con exito");
+            this.router.navigate(['dashboard/customers']);
+          
+         
         },
       (error)=>{
         console.log("Error al crear el cliente ", error);

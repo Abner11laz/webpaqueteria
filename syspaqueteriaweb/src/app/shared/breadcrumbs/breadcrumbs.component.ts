@@ -14,6 +14,7 @@ export class BreadcrumbsComponent {
   currentView: string = 'Dashboard'; // Vista inicial
   activeTab: string = 'manage'; // Pestaña activa inicial
   selectedUser: number=0;
+  selectedidCust: number=0;
   constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router) {}
   navigateToCreateCustomer() {
     this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
@@ -22,6 +23,8 @@ export class BreadcrumbsComponent {
   navigateToCreateUser(){
     this.router.navigate(['./users/create-user'],{relativeTo: this.route})
   }
+
+ 
 
   ngOnInit(): void {
     this.ribbonService.setBreadcrumbVisibility(false);
@@ -41,7 +44,12 @@ export class BreadcrumbsComponent {
     this.ribbonService.selectedUser$.subscribe(user => {
       this.selectedUser = user;
       console.log("Usuario desde breadcrumbs component: ", user);
-    })
+    });
+
+    this.ribbonService.custSelected$.subscribe(cust => {
+        this.selectedidCust = cust;
+        console.log("El id del cliente que se selecciono es: ", this.selectedidCust);
+    });
 /*
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
@@ -60,6 +68,18 @@ export class BreadcrumbsComponent {
     this.activeTab = tab;
   }
 
+
+  navigateToEditCustomer():void{
+
+    if(this.selectedidCust >0){
+      console.log("Has hecho clic en el id: ", this.selectedidCust);
+      this.router.navigate(['./customers/edit-customer',this.selectedidCust],{relativeTo: this.route})
+    }else{
+      console.log("No se ha seleccionado ningun cliente");
+      //Poder llamar a una ventana emergente.
+    }
+   
+  }
 
   /*activeTab: string = 'manage'; // La pestaña por defecto es 'manage'
 

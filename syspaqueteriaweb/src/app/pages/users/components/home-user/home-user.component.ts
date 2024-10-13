@@ -29,7 +29,7 @@ selectedUser: any = null;
 
     selectUser(user:any){
       this.selectedUser  = user;
-      console.log("usuario: ", user);
+      
       this.ribbonService.setSelectedUser(user);
     }
 

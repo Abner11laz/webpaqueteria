@@ -23,6 +23,9 @@
   .aside-content h5 {
     margin-top: 0;
   }
+  .selected {
+  background-color: lightblue;
+  }
   
   </style>
 
@@ -43,7 +46,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientes; let i = index" (click)="showDetails(cliente.id)">
+          <tr 
+          *ngFor="let cliente of clientes; let i = index" 
+          (click)="showDetails(cliente.clienteID)"
+          [class.table-active]="cliente.clienteID===selectedCustomer">
             <td>{{ i + 1 }}</td>
             <td>{{ cliente.codigoCliente }}</td>
             <td>{{ cliente.nombresCliente }}</td>
@@ -58,13 +64,23 @@
 
 <div class="aside-container" [class.show]="asideVisible">
   <div class="aside-content">
-    <h5>Detalles de {{ selectedCustomer?.name }}</h5>
+   <!-- <h5>Detalles de {{ selectedCustomer?.name }}</h5>
     <p><strong>Email:</strong> {{ selectedCustomer?.email }}</p>
     <p><strong>Teléfono:</strong> {{ selectedCustomer?.phone }}</p>
     <p><strong>Facturas emitidas:</strong> {{ selectedCustomer?.invoices }}</p>
     <p><strong>Pedidos abiertos:</strong> {{ selectedCustomer?.openOrders }}</p>
     <p><strong>Anulaciones:</strong> {{ selectedCustomer?.cancellations }}</p>
     <button class="btn btn-primary" (click)="hideDetails()">Cerrar</button>
+    -->
+
+    <h5>Detalles de {{ selectedCustomer }}</h5>
+    <p><strong>Email:</strong> {{ selectedCustomer }}</p>
+    <p><strong>Teléfono:</strong> {{ selectedCustomer}}</p>
+    <p><strong>Facturas emitidas:</strong> {{ selectedCustomer}}</p>
+    <p><strong>Pedidos abiertos:</strong> {{ selectedCustomer }}</p>
+    <p><strong>Anulaciones:</strong> {{ selectedCustomer }}</p>
+    <button class="btn btn-primary" (click)="hideDetails()">Cerrar</button>
+
   </div>
   
 </div>

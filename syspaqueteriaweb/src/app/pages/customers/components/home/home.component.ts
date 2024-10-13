@@ -10,12 +10,14 @@ import { CustomerService } from '../../../../services/customer.service';
 export class HomeComponent implements OnInit{
   clientes:any[]=[];
   notisLoading:boolean = false;
+  custselectedId: number = 0;
   constructor(private breadCrumbService: BreadcrumbsService, private customerService:CustomerService){}
   
   ngOnInit(): void {
     this.breadCrumbService.setBreadcrumbVisibility(true);
     this.customerService.getCustomers().subscribe((response)=>{
       this.clientes = response;
+      console.log("Data de clientes: ", this.clientes);
       this.notisLoading = true;
     },
   (error)=>{
@@ -25,15 +27,18 @@ export class HomeComponent implements OnInit{
   }
 
 
-  selectedCustomer: any = null;
+  selectedCustomer: number = 0;
   asideVisible = false;
 
-  showDetails(customer: any) {
-    this.selectedCustomer = customer;
+  showDetails(customerId: number) {
+   console.log("Cliente seleccionado desde vista: ", customerId);
     this.asideVisible = true;
+    this.selectedCustomer = customerId;
+    this.breadCrumbService.setselectedCust(customerId)
   }
 
   hideDetails() {
     this.asideVisible = false;
   }
+
 }

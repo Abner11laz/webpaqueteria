@@ -13,6 +13,7 @@ import { HomeComponent } from './customers/components/home/home.component';
 import { CreateUserComponent } from './users/components/create-user/create-user.component';
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -23,7 +24,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     CreateCustomerComponent,
     HomeComponent,
     CreateUserComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    EditCustomerComponent
   ],
   imports: [
     CommonModule,
