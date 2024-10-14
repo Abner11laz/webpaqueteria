@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import Swal from 'sweetalert2';
 //import { Router } from 'express';
 
 @Component({
@@ -79,6 +80,36 @@ export class BreadcrumbsComponent {
       //Poder llamar a una ventana emergente.
     }
    
+  }
+
+  confirmdeleteCust(event: Event):void{
+    if(this.selectedidCust >0){
+      event.stopPropagation(); // Evitar que se dispare el evento de click en la fila
+
+      // Mostrar la ventana emergente de confirmación con SweetAlert2
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Si el usuario confirma, llama a la función para eliminar el cliente
+          //this.deleteCliente(clienteID);
+          Swal.fire(
+            '¡Eliminado!',
+            'El cliente ha sido eliminado.',
+            'success'
+          );
+        }
+      });
+    }else{
+      console.log("no se ha seleccionado ningun cliente a eliminar");
+    }
   }
 
   /*activeTab: string = 'manage'; // La pestaña por defecto es 'manage'

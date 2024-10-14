@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, MinValidator, Validators } from '@angular/forms';
 import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
 import { CustomerService } from '../../../../services/customer.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -17,19 +17,19 @@ export class EditCustomerComponent implements OnInit {
  
 constructor(private formBuilder: FormBuilder, private customerService: CustomerService, private breadcrumbsService: BreadcrumbsService, private router:Router, private route:ActivatedRoute){
   this.customereditForm = this.formBuilder.group({
-    clienteID:[7,Validators.required],
-    codigoCliente:['C7'],
+    clienteID:[],
+    codigoCliente:[''],
     nombresCliente:['',Validators.required],
     apellidosCliente:['', Validators.required],
     direccionCliente:['', Validators.required],
-    telefonoCliente:[''],
+    telefonoCliente:['', Validators.required],
     correoCliente:['', Validators.required],
     nit:['', Validators.required],
-    categoriaCliente:[''],
+    categoriaCliente:['', Validators.required],
     departamento:['', Validators.required],
     municipio:['', Validators.required],
-    estadoCliente:[''],
-    accion:['']
+    estadoCliente:['', Validators.required],
+    accion:['', Validators.required]
   });
 }
 
@@ -44,8 +44,8 @@ constructor(private formBuilder: FormBuilder, private customerService: CustomerS
     if(this.customId >0){
       this.customerService.searchCus(this.customId).subscribe((customer)=>{
         this.customereditForm.patchValue({
-          clienteID:7,
-          codigoCliente:'C7',
+          clienteID:this.customId,
+          codigoCliente:customer.codigoCliente,
           nombresCliente:customer.nombresCliente,
           apellidosCliente:customer.apellidosCliente,
           direccionCliente:customer.direccionCliente,
@@ -68,9 +68,10 @@ constructor(private formBuilder: FormBuilder, private customerService: CustomerS
   onSubmit():void{
     if(this.customereditForm.valid){
       const customerdataForm = this.customereditForm.value;
+      console.log("Info de cliente a enviar: ",customerdataForm);
       this.customerService.setCustomer(customerdataForm).subscribe((response:any)=>{
       
-          console.log("Cliente actualizado con exito");
+          console.log("Cliente actualizado con exito ",response);
           this.router.navigate(['dashboard/customers']);
         
        
@@ -81,7 +82,8 @@ constructor(private formBuilder: FormBuilder, private customerService: CustomerS
     }else{
       const invalidFields = this.getInvalidFields(this.customereditForm);
       console.log('Campos inválidos: ', invalidFields);
-      alert('Rellena los campos requeridos');
+      this.customereditForm.markAllAsTouched();
+     
     }
   }
 

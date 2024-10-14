@@ -20,18 +20,18 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.customerForm = this.fb.group({
       clienteID:[null],
-      codigoCliente:[''],
+      codigoCliente:['', Validators.required],
       nombresCliente:['',Validators.required], //Para nombre de cliente a facturar
-      apellidosCliente:[''], //Para nombre de comercio
-      estadoCliente:[''], // EstadoCliente
-      telefonoCliente:[''],
-      correoCliente:[''],
+      apellidosCliente:['', Validators.required], //Para nombre de comercio
+      estadoCliente:['', Validators.required], // EstadoCliente
+      telefonoCliente:['', Validators.required],
+      correoCliente:['', Validators.required],
       direccionCliente:['', Validators.required], //Para direccion de cliente
       municipio:['',Validators.required], //Para ciudad o Municipio = Municipio
       //postCode:['',Validators.required], //Para codigo Postal
       departamento:['', Validators.required], //Para País o region = Departamento
-      nIT: [''],
-      categoriaCliente:[''],
+      nIT: ['', Validators.required],
+      categoriaCliente:['', Validators.required],
       accion:['', Validators.required]
       
     });
@@ -53,7 +53,7 @@ export class CreateCustomerComponent implements OnInit {
         console.log("Error al crear el cliente ", error);
       });
       }else{
-        alert('Rellena los campos requeridos');
+        this.customerForm.markAllAsTouched();
       }
    
   }
