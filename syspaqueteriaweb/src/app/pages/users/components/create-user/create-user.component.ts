@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from '../../../../services/user.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-create-user',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit{
   userForm!:FormGroup
-constructor(private fb:FormBuilder, private ribbonService:BreadcrumbsService, private http: HttpClient, private router:Router){
+constructor(private fb:FormBuilder, private ribbonService:BreadcrumbsService, private http: HttpClient, private router:Router, private userService: UserService){
   this.userForm = this.fb.group({
     Nombre:['',Validators.required],
     Apellido:['', Validators.required],
@@ -34,26 +36,17 @@ ngOnInit(): void {
 
 }
 
-
-
 onsubmitUser(): void{
   if (this.userForm.valid) {
     const userData = this.userForm.value;
-    console.log('Datos enviados:', userData);
-    this.http.post('http://54.227.145.10/api/usuario/crea-usuario', userData,
-      {headers:{'Content-Type':'application/json'}}
-    )
-      .subscribe({
-        next: (response) => {
-          console.log('Usuario creado con éxito:', response);
-          this.router.navigate(['/users']);
-          // Aquí puedes manejar la respuesta del servidor, como mostrar un mensaje de éxito
-        },
-        error: (error) => {
-          console.error('Error al crear el usuario:', error);
-          // Aquí puedes manejar el error, como mostrar un mensaje de error
-        }
-      });
+    this.userService.setUser(userData).subscribe((response)=>{
+        console.log("Usuario Insertado correctamente");
+        this.router.navigate(['dashboard/users']);
+    },
+  (error)=>{
+    console.log("Error al insertar los datos ", error);
+  });
+   
   } else {
     // Aquí se puede mostrar un mensaje de advertencia si el formulario no es válido
     this.userForm.markAllAsTouched(); // Marca todos los controles como 'tocados' para mostrar los errores

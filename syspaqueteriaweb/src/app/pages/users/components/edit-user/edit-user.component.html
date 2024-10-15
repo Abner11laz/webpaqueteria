@@ -1,10 +1,10 @@
 <div class="container-fluid mt-2">
     <div class="card">
       <div class="card-header py-2">
-        <h2 class="mb-4">Crear Usuario</h2>
+        <h2 class="mb-4">Editar Usuario</h2>
       </div>
       <div class="card-body p-3">
-        <form [formGroup]="userForm" (ngSubmit)="onsubmitUser()">
+        <form [formGroup]="usereditForm" (ngSubmit)="onsubmitUser()">
           <div class="row">
             <!-- General Information -->
             <div class="col-md-6">
@@ -18,7 +18,7 @@
                   class="form-control form-control-sm"
                   placeholder="Nombres"
                 />
-                <div *ngIf="userForm.get('Nombre')?.invalid && userForm.get('Nombre')?.touched">
+                <div *ngIf="usereditForm.get('Nombre')?.invalid && usereditForm.get('Nombre')?.touched">
                     <small>El nombre es obligatorio.</small>
                   </div>
               </div>
@@ -32,7 +32,7 @@
                   class="form-control form-control-sm"
                   placeholder="Apellidos"
                 />
-                <div *ngIf="userForm.get('Apellido')?.invalid && userForm.get('Apellido')?.touched">
+                <div *ngIf="usereditForm.get('Apellido')?.invalid && usereditForm.get('Apellido')?.touched">
                     <small>El apellido es obligatorio.</small>
                   </div>
               </div>
@@ -47,9 +47,9 @@
                   placeholder="ejemplo@me.com"
                   required
                 />
-                <div *ngIf="userForm.get('Correo')?.invalid && userForm.get('Correo')?.touched">
-                    <small *ngIf="userForm.get('Correo')?.hasError('required')">El correo es obligatorio.</small>
-                    <small *ngIf="userForm.get('Correo')?.hasError('email')">Debe ser un correo válido.</small>
+                <div *ngIf="usereditForm.get('Correo')?.invalid && usereditForm.get('Correo')?.touched">
+                    <small *ngIf="usereditForm.get('Correo')?.hasError('required')">El correo es obligatorio.</small>
+                    <small *ngIf="usereditForm.get('Correo')?.hasError('email')">Debe ser un correo válido.</small>
                   </div>
                   
               </div>
@@ -62,9 +62,9 @@
                   class="form-control form-control-sm"
                   placeholder="xxxxxxx"
                 />
-                <div *ngIf="userForm.get('Contraseña')?.invalid && userForm.get('Contraseña')?.touched">
-                    <small *ngIf="userForm.get('Contraseña')?.hasError('required')">La contraseña es obligatoria.</small>
-                    <small *ngIf="userForm.get('Contraseña')?.hasError('minlength')">Debe tener al menos 6 caracteres.</small>
+                <div *ngIf="usereditForm.get('Contraseña')?.invalid && usereditForm.get('Contraseña')?.touched">
+                    <small *ngIf="usereditForm.get('Contraseña')?.hasError('required')">La contraseña es obligatoria.</small>
+                    <small *ngIf="usereditForm.get('Contraseña')?.hasError('minlength')">Debe tener al menos 6 caracteres.</small>
                   </div>
               </div>
               
@@ -85,9 +85,9 @@
                   class="form-control form-control-sm"
                   placeholder="(502)-xxxx-xxxx"
                 />
-                <div *ngIf="userForm.get('Telefono')?.invalid && userForm.get('Telefono')?.touched">
-                    <small *ngIf="userForm.get('Telefono')?.hasError('required')">El teléfono es obligatorio.</small>
-                    <small *ngIf="userForm.get('Telefono')?.hasError('pattern')">El teléfono debe contener solo números.</small>
+                <div *ngIf="usereditForm.get('Telefono')?.invalid && usereditForm.get('Telefono')?.touched">
+                    <small *ngIf="usereditForm.get('Telefono')?.hasError('required')">El teléfono es obligatorio.</small>
+                    <small *ngIf="usereditForm.get('Telefono')?.hasError('pattern')">El teléfono debe contener solo números.</small>
                   </div>
               </div>
   

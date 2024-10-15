@@ -9,7 +9,7 @@
           <!-- General Information -->
           <div class="col-md-6">
             <label>General</label>
-            <div class="form-group mb-3">
+           <!-- <div class="form-group mb-3">
               No.
               <input
                 type="text"
@@ -18,37 +18,52 @@
                 class="form-control form-control-sm"
                 placeholder="Enter customer number"
               />
-            </div>
+            </div>-->
 
             <div class="form-group mb-3">
               Nombre
               <input
                 type="text"
-                id="nameBilling"
-                formControlName="nameBilling"
+                id="nombresCliente"
+                formControlName="nombresCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter billing name"
+                placeholder="Ingrese los nombres del cliente"
+                [ngClass]="{ 'is-invalid': customerForm.get('nombresCliente')?.invalid && customerForm.get('nombresCliente')?.touched }"
               />
+              <div *ngIf="customerForm.get('nombresCliente')?.invalid && customerForm.get('nombresCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
 
             <div class="form-group mb-3">
-              Nombre del comercio
+              Apellidos del cliente
               <input
                 type="text"
-                id="nameTrading"
-                formControlName="nameTrading"
+                id="apellidosCliente"
+                formControlName="apellidosCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter trading name"
+                placeholder="Ingrese apellidos del cliente"
+                [ngClass]="{ 'is-invalid': customerForm.get('apellidosCliente')?.invalid && customerForm.get('apellidosCliente')?.touched }"
               />
+              <div *ngIf="customerForm.get('apellidosCliente')?.invalid && customerForm.get('apellidosCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
-            <div class="form-group d-flex justify-content-between mb-3">
-              Bloqueado
-              <input
-                type="checkbox"
-                id="customerStatus"
-                formControlName="customerStatus"
-                class="ml-auto"
-              />
+            <div class="form-group mb-3">
+              Estado del cliente
+              <select 
+              id="estadoCliente" 
+              formControlName="estadoCliente" 
+              class="form-control form-control-sm"
+              [ngClass]="{ 'is-invalid': customerForm.get('estadoCliente')?.invalid && customerForm.get('estadoCliente')?.touched }">
+                <option value="0" disabled selected></option>
+                <option value="CV">Vigente</option>
+                <option value="NV">No vigente</option>
+                
+              </select>
+              <div *ngIf="customerForm.get('estadoCliente')?.invalid && customerForm.get('estadoCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
           </div>
 
@@ -56,27 +71,35 @@
         
 
           <div class="col-md-6">
-            <label>Posting Setup</label>
+           <label>Datos de Contacto</label>
             <div class="form-group mb-3">
-              Gen. Bus. Posting Group
+              Telefono
               <input
                 type="text"
-                id="genBusPostingGroup"
-                formControlName="genBusPostingGroup"
+                id="telefonoCliente"
+                formControlName="telefonoCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter posting group"
+                placeholder="Ingrese número de contacto"
+                [ngClass]="{ 'is-invalid': customerForm.get('telefonoCliente')?.invalid && customerForm.get('telefonoCliente')?.touched }"
               />
+              <div *ngIf="customerForm.get('telefonoCliente')?.invalid && customerForm.get('telefonoCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
 
             <div class="form-group mb-3">
-              VAT Bus. Posting Group
+              Correo
               <input
                 type="text"
-                id="vatBusPostingGroup"
-                formControlName="vatBusPostingGroup"
+                id="correoCliente"
+                formControlName="correoCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter VAT posting group"
+                placeholder="ejemplo@me.com"
+                [ngClass]="{ 'is-invalid': customerForm.get('correoCliente')?.invalid && customerForm.get('correoCliente')?.touched }"
               />
+              <div *ngIf="customerForm.get('correoCliente')?.invalid && customerForm.get('correoCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
           </div>
 
@@ -92,24 +115,35 @@
              Direccion
               <input
                 type="text"
-                id="customerAdress"
-                formControlName="address"
+                id="direccionCliente"
+                formControlName="direccionCliente"
                 class="form-control form-control-sm"
-                placeholder="Enter address"
+                placeholder="Ingrese Dirección"
+                [ngClass]="{ 'is-invalid': customerForm.get('direccionCliente')?.invalid && customerForm.get('direccionCliente')?.touched }"
               />
+              <div *ngIf="customerForm.get('direccionCliente')?.invalid && customerForm.get('direccionCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
 
             <div class="form-group mb-3">
               Municipio
-              <input
-                type="text"
-                id="city"
-                formControlName="city"
-                class="form-control form-control-sm"
-                placeholder="Enter city"
-              />
+              <select 
+              id="municipio" 
+              formControlName="municipio" 
+              class="form-control form-control-sm"
+              [ngClass]="{ 'is-invalid': customerForm.get('municipio')?.invalid && customerForm.get('municipio')?.touched }">
+                <option value="0" disabled  selected>[SELECCIONA UN MUNICIPIO]</option>
+                <option value="0101">Villa Nueva</option>
+                <option value="0102">Zona 01</option>
+                <option value="0103">San Jose Villa Nueva</option>
+          
+              </select>
+              <div *ngIf="customerForm.get('municipio')?.invalid && customerForm.get('municipio')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
-
+<!--
             <div class="form-group mb-3">
              Código Postal
               <input
@@ -117,19 +151,27 @@
                 id="postCode"
                 formControlName="postCode"
                 class="form-control form-control-sm"
-                placeholder="Enter post code"
+                placeholder="Ingrese el código postal"
               />
-            </div>
+            </div>-->
 
             <div class="form-group mb-3">
              Departamento
-              <input
-                type="text"
-                id="countryRegion"
-                formControlName="countryRegion"
-                class="form-control form-control-sm"
-                placeholder="Enter country/region code"
-              />
+             <select 
+             id="departamento"
+             formControlName="departamento" 
+             class="form-control form-control-sm"
+             [ngClass]="{ 'is-invalid': customerForm.get('departamento')?.invalid && customerForm.get('departamento')?.touched }">
+              <option value="0" disabled  selected>[SELECCIONA UN DEPARTAMENTO]</option>
+              <option value="01">Guatemala</option>
+              <option value="02">Chiquimula</option>
+              <option value="04">Jalapa</option>
+              <option value="05">Jutiapa</option>
+              <option value="06">Santa Rosa</option>
+            </select>
+            <div *ngIf="customerForm.get('departamento')?.invalid && customerForm.get('departamento')?.touched">
+              <small class="text-danger">Campo obligatorio.</small>
+            </div>         
             </div>
           </div>
 
@@ -139,13 +181,51 @@
              NIT
               <input
                 type="text"
-                id="vatRegistrationNo"
-                formControlName="vatRegistrationNo"
+                id="nIT"
+                formControlName="nIT"
                 class="form-control form-control-sm"
-                placeholder="Enter VAT registration number"
+                placeholder="Número de NIT"
+                [ngClass]="{ 'is-invalid': customerForm.get('nIT')?.invalid && customerForm.get('nIT')?.touched }"
               />
+              <div *ngIf="customerForm.get('nIT')?.invalid && customerForm.get('nIT')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div> 
+            </div>
+            <div class="form-group mb-3">
+              Tipo de cliente
+              <select 
+              id="categoriaCliente" 
+              formControlName="categoriaCliente" 
+              class="form-control form-control-sm"
+              [ngClass]="{ 'is-invalid': customerForm.get('categoriaCliente')?.invalid && customerForm.get('categoriaCliente')?.touched }">
+                <option value="0" disabled selected>Selecciona una clasificación</option>
+                <option value="Mayorista">Mayorista</option>
+                <option value="Minorista">Minorista</option>
+              </select>
+              <div *ngIf="customerForm.get('categoriaCliente')?.invalid && customerForm.get('categoriaCliente')?.touched">
+                <small class="text-danger">Campo obligatorio.</small>
+              </div>
             </div>
 
+            <div class="form-group mb-3">
+              Acción
+              <select 
+              id="accion" 
+              formControlName="accion" 
+              class="form-control form-control-sm"
+              [ngClass]="{ 'is-invalid': customerForm.get('accion')?.invalid && customerForm.get('accion')?.touched }">
+                  <option value="0" disabled  selected>[SELECCIONA UN PERFIL]</option>
+                  <option value="C R U D">CREATE READ UPDATE DELETE</option>
+                  <option value="R">READ</option>
+                  <option value="C">CREATE</option>
+                  <option value="U">UPDATE</option>
+                  <option value="D">DELETE</option>
+                </select>
+                <div *ngIf="customerForm.get('accion')?.invalid && customerForm.get('accion')?.touched">
+                  <small class="text-danger">Campo obligatorio.</small>
+                </div>
+            </div>
+<!-- considerar dejar este campo por si nos da tiempo programar la logica para aceptar credito
             <div class="form-group mb-3">
               Limite de credito
               <input
@@ -155,7 +235,7 @@
                 class="form-control form-control-sm"
                 placeholder="Enter credit limit"
               />
-            </div>
+            </div>-->
           </div>
         </div>
 

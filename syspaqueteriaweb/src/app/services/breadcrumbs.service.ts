@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BreadcrumbsService {
   
-  private viewSubject = new BehaviorSubject<string>('Productos'); // Valor inicial "Clientes"
+  private viewSubject = new BehaviorSubject<string>('home-user'); // Valor inicial "Clientes"
   currentView$ = this.viewSubject.asObservable();
   setView(view: string) {
     this.viewSubject.next(view);
@@ -25,5 +25,12 @@ export class BreadcrumbsService {
 
     setSelectedUser(user:number){
       this.selectedUserSource.next(user);
+    }
+
+    private custselectedSource = new BehaviorSubject<number>(0);
+    custSelected$ = this.custselectedSource.asObservable();
+
+    setselectedCust(cusId:number){
+      this.custselectedSource.next(cusId);
     }
 }

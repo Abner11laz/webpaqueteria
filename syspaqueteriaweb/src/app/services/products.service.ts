@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
+
   private apiUrl = 'http://54.227.145.10/api/producto/listar-todo';  // API para obtener productos
   private apiCreateUpdateUrl = 'http://54.227.145.10/api/producto/crear-o-actualizar';  // API para crear o actualizar productos
 
@@ -21,4 +22,5 @@ export class ProductsService {
   createOrUpdateProducto(producto: any): Observable<any> {
     return this.http.post<any>(this.apiCreateUpdateUrl, producto);
   }
+
 }

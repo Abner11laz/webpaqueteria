@@ -11,14 +11,17 @@ import { error } from 'console';
 export class HomeUserComponent implements OnInit {
 
   users:any[] =[];
+  isLoading:boolean = true;
   constructor(private ribbonService: BreadcrumbsService, private userService: UserService){}
   ngOnInit(): void {
     this.ribbonService.setBreadcrumbVisibility(true);
     this.userService.getUser().subscribe((data)=>{
       this.users = data;
+      this.isLoading = false;
     },
   (error) => {
     console.log('error al obtener datos',error);
+    this.isLoading = false;
   });
   }
 selectedUser: any = null;
@@ -26,7 +29,7 @@ selectedUser: any = null;
 
     selectUser(user:any){
       this.selectedUser  = user;
-      console.log("usuario: ", user);
+      
       this.ribbonService.setSelectedUser(user);
     }
 

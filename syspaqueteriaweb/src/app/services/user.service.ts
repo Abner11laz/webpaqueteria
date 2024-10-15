@@ -7,11 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private  endpointUri = 'http://54.227.145.10/api/usuario/listar-todos';
-
+  private  baseapiUri = 'http://54.227.145.10/api/usuario';
   constructor(private httpclient: HttpClient) { }
 
   getUser():Observable<any>{
-    return this.httpclient.get<any>(this.endpointUri);
+    return this.httpclient.get<any>(`${this.baseapiUri}/listar-todos`);
   }
+  setUser(userdataForm:any):Observable<any>{
+    return this.httpclient.post(`${this.baseapiUri}/crear-o-actualizar`,userdataForm);
+  }
+
 }

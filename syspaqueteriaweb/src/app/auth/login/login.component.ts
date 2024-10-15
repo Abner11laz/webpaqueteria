@@ -36,7 +36,9 @@ export class LoginComponent implements OnInit {
         next: (response) => {
 
           if (response.usuarioID > 0) {
+
             this.router.navigate(['/dashboard']);
+
           } else {
             this.errorMessage = 'Correo o contraseña incorrectos';
           }

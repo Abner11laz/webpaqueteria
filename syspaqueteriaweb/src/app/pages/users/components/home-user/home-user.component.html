@@ -3,27 +3,35 @@
   background-color: lightblue;
 }
 </style>
-
 <div class="container-fluid mt-4">
-    <table class="table table-bordered">
-        <thead >
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Emailddd</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users; let i = index"
-          [class.selected] = "user.id === selectedUser"
-          (click)="selectUser(user.id)">
-            <td>{{ i + 1 }}</td>
-            <td>{{ user.usuarioID }}</td>
-            <td>{{ user.correo }}</td>
-            <td>{{ user.nombre }}</td>
-            <td>{{ user.apellido }}</td>
-          </tr>
-        </tbody>
-    </table>
-    
+  <!-- Mostrar un mensaje de carga mientras los datos no están listos -->
+  <div *ngIf="isLoading; else tableTemplate">
+    <p>Cargando usuarios...</p>
   </div>
+
+  <!-- Plantilla para la tabla de usuarios -->
+  <ng-template #tableTemplate>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID Usuario</th>
+          <th>Correo</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index"
+            [class.table-active]="user.usuarioID === selectedUser" 
+            (click)="selectUser(user.usuarioID)">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.usuarioID }}</td>
+          <td>{{ user.correo }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</div>

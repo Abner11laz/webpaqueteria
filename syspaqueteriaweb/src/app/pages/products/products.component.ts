@@ -7,6 +7,7 @@ import { ProductsService } from '../../services/products.service'; // Ajusta la 
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
 
   productos: any[] = [];  // Inicializamos como un array vacío
@@ -27,5 +28,6 @@ export class ProductsComponent implements OnInit {
         console.error('Error al cargar los productos:', error);
       }
     );
+
   }
 }

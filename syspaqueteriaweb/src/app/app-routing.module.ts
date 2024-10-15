@@ -4,9 +4,11 @@ import { NopageFoundComponent } from './nopage-found/nopage-found.component';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/login', pathMatch:'full'},
+  {path:'', redirectTo: '/dashboard', pathMatch:'full'},
+  { path: 'login', component: LoginComponent },    
   {path:'**', component: NopageFoundComponent}
 ];
 
