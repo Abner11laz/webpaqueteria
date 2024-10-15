@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { CustomerService } from '../../services/customer.service';
 import { filter } from 'rxjs';
 import Swal from 'sweetalert2';
 //import { Router } from 'express';
@@ -16,7 +17,8 @@ export class BreadcrumbsComponent {
   activeTab: string = 'manage'; // Pestaña activa inicial
   selectedUser: number=0;
   selectedidCust: number=0;
-  constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router) {}
+  isDeleted: boolean =false;
+  constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router, private customerService:CustomerService) {}
   navigateToCreateCustomer() {
     this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
   }
@@ -100,11 +102,9 @@ export class BreadcrumbsComponent {
         if (result.isConfirmed) {
           // Si el usuario confirma, llama a la función para eliminar el cliente
           //this.deleteCliente(clienteID);
-          Swal.fire(
-            '¡Eliminado!',
-            'El cliente ha sido eliminado.',
-            'success'
-          );
+        this.deleteCustomer()
+
+         
         }
       });
     }else{
@@ -112,6 +112,36 @@ export class BreadcrumbsComponent {
     }
   }
 
+    deleteCustomer():void{
+     
+      this.customerService.deleteCustomerP(this.selectedidCust).subscribe(response=>{
+        Swal.fire(
+          '¡Eliminado!',
+          'El cliente ha sido eliminado.',
+          'success'
+        );
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['./customers'], { relativeTo: this.route });
+      },
+        error=>{
+        Swal.fire(
+        'Error!',
+        'El cliente no ha sido eliminado.',
+        'error'
+      );
+      console.log("error al eliiminar el cliente: ", error);
+    });
+   
+    
+    }
+    navigateToEditUser():void{
+
+      if(this.selectedUser >0){
+        console.log("Has hecho clic en el usuario: ", this.selectedUser);
+        this.router.navigate(['./users/edit-user',this.selectedUser],{relativeTo: this.route})
+      }
+    }
   /*activeTab: string = 'manage'; // La pestaña por defecto es 'manage'
 
   setActiveTab(tab: string) {

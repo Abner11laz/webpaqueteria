@@ -26,4 +26,8 @@ export class CustomerService {
 
     return this.httpClient.get(`${this.baseUriApi}/leer/${cusId}`)
   }
+
+  deleteCustomerP(cusdelId:number):Observable<any>{
+    return this.httpClient.delete(`${this.baseUriApi}/eliminar/${cusdelId}`)
+  }
 }

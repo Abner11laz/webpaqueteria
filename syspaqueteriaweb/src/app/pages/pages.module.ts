@@ -14,6 +14,7 @@ import { CreateUserComponent } from './users/components/create-user/create-user.
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
+import { EditUserComponent } from './users/components/edit-user/edit-user.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -25,7 +26,8 @@ import { EditCustomerComponent } from './customers/components/edit-customer/edit
     HomeComponent,
     CreateUserComponent,
     HomeUserComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import { HomeUserComponent } from './users/components/home-user/home-user.compon
 import { HomeComponent } from './customers/components/home/home.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
+import { EditUserComponent } from './users/components/edit-user/edit-user.component';
 
 const routes: Routes=[
   {path: 'dashboard', component: PagesComponent,canActivate:[AuthGuard],
@@ -19,8 +20,9 @@ const routes: Routes=[
       {path:'',component: DashboardComponent},
       {path:'users', component:UsersComponent,canActivate:[AuthGuard],
         children:[
-          {path: '', component:HomeUserComponent},
-          {path:'create-user', component:CreateUserComponent}
+          {path: '', component:HomeUserComponent,canActivate:[AuthGuard]},
+          {path:'create-user', component:CreateUserComponent,canActivate:[AuthGuard]},
+          {path: 'edit-user/:idUser', component:EditUserComponent,canActivate:[AuthGuard]}
         ]
       },
       {path:'products', component:ProductsComponent,canActivate:[AuthGuard]},
@@ -29,6 +31,7 @@ const routes: Routes=[
           { path: '', component: HomeComponent },
           { path: 'create-customer', component: CreateCustomerComponent },
           { path: 'edit-customer/:id', component:EditCustomerComponent}
+          
         ]
       },
     ]
