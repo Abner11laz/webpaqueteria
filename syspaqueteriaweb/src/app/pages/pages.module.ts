@@ -13,6 +13,9 @@ import { HomeComponent } from './customers/components/home/home.component';
 import { CreateUserComponent } from './users/components/create-user/create-user.component';
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { SalesComponent } from './sales/sales.component';
+import { CreateProductsComponent } from './products/create-products/create-products.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -23,14 +26,16 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     CreateCustomerComponent,
     HomeComponent,
     CreateUserComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    SalesComponent,
+    CreateProductsComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
-    
+    FormsModule,
   ],
   providers:[
     provideHttpClient(withFetch())
@@ -40,8 +45,9 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     UsersComponent,
     ProductsComponent,
     CustomersComponent,
-    CreateCustomerComponent
-   
+    CreateCustomerComponent,
+    SalesComponent,
+    CreateProductsComponent
   ]
 })
 export class PagesModule { }

@@ -11,29 +11,40 @@ import { CreateUserComponent } from './users/components/create-user/create-user.
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { HomeComponent } from './customers/components/home/home.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { SalesComponent } from './sales/sales.component';  // Importa el componente Sales
+import { CreateProductsComponent } from './products/create-products/create-products.component';
 
-const routes: Routes=[
-  {path: 'dashboard', component: PagesComponent,canActivate:[AuthGuard],
-    children:[
-      {path:'',component: DashboardComponent},
-      {path:'users', component:UsersComponent,
-        children:[
-          {path: '', component:HomeUserComponent},
-          {path:'create-user', component:CreateUserComponent}
+const routes: Routes = [
+  {
+    path: 'dashboard',
+    component: PagesComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: DashboardComponent },
+      {
+        path: 'users',
+        component: UsersComponent,
+        children: [
+          { path: '', component: HomeUserComponent },
+          { path: 'create-user', component: CreateUserComponent }
         ]
       },
-      {path:'products', component:ProductsComponent},
-      {path:'customers', component:CustomersComponent,
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/create', component: CreateProductsComponent },
+      {
+        path: 'customers',
+        component: CustomersComponent,
         children: [
           { path: '', component: HomeComponent },
           { path: 'create-customer', component: CreateCustomerComponent }
         ]
       },
+      { path: 'sales',
+        component: SalesComponent
+      },
     ]
-   },
-   
-  
-]
+  }
+];
 
 
 @NgModule({

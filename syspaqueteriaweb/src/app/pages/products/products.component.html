@@ -1,1 +1,37 @@
-<p>products works!</p>
+<div class="container-fluid mt-3">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Lista de Productos</h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-bordered table-hover table-responsive-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID Producto</th>
+            <th scope="col">Código Producto</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Código Proveedor</th>
+            <th scope="col">Fecha Vencimiento</th>
+            <th scope="col">Ubicación Física</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td>{{ producto.productoID }}</td>
+            <td>{{ producto.codigoProducto }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.codigoProveedor }}</td>
+            <td>{{ producto.fechaVencimiento | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ producto.ubicacionFisica }}</td>
+            <td>{{ producto.existenciaMinima }}</td>
+            <td>{{ producto.precio | currency: 'GTQ ':'symbol':'1.2-2' }}</td>
+            <td>{{ producto.estado === 'D' ? 'Disponible' : 'No Disponible' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

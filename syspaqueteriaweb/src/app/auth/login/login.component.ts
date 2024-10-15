@@ -31,19 +31,19 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-    
+
       this.authService.login(loginData).subscribe({
         next: (response) => {
-         
+
           if (response.usuarioID > 0) {
-            this.router.navigate(['/Dashboard']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.errorMessage = 'Correo o contraseña incorrectos';
           }
         },
         error: (err) => {
           console.log('Error en el login', err);
-          this.errorMessage = 'Hubo un error, intenta nuevamente';
+          this.errorMessage = 'Hubo un error, intenta nuevamente ';
         },
       });
     }

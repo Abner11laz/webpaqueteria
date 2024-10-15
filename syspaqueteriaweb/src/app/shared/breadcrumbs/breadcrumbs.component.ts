@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-//import { Router } from 'express';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -10,60 +9,55 @@ import { filter } from 'rxjs';
   styleUrl: './breadcrumbs.component.css'
 })
 export class BreadcrumbsComponent {
-  showBreadcrumb: boolean = true; 
+  showBreadcrumb: boolean = true;
   currentView: string = 'Dashboard'; // Vista inicial
   activeTab: string = 'manage'; // Pestaña activa inicial
-  selectedUser: number=0;
-  constructor(private ribbonService: BreadcrumbsService, private route:ActivatedRoute, private router: Router) {}
+  selectedUser: number = 0;
+
+  constructor(private ribbonService: BreadcrumbsService, private route: ActivatedRoute, private router: Router) {}
+
   navigateToCreateCustomer() {
     this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
   }
 
-  navigateToCreateUser(){
-    this.router.navigate(['./users/create-user'],{relativeTo: this.route})
+  navigateToCreateUser() {
+    this.router.navigate(['./users/create-user'], { relativeTo: this.route });
+  }
+
+  navigateToCreateProducts() {
+    this.router.navigate(['./products/create'], { relativeTo: this.route });
   }
 
   ngOnInit(): void {
-
     this.ribbonService.currentView$.subscribe(view => {
       this.currentView = view;
-      console.log("Desde breadcrumbs component ts ->",view);
       this.activeTab = 'manage'; // Cambia la pestaña activa cuando cambia la vista
-
-     
-
     });
-    this.ribbonService.breadcrumbVisibility$.subscribe(visible=>{
+
+    this.ribbonService.breadcrumbVisibility$.subscribe(visible => {
       this.showBreadcrumb = visible;
-      console.log("mostrar breadcrubs: ", this.showBreadcrumb);
     });
 
     this.ribbonService.selectedUser$.subscribe(user => {
       this.selectedUser = user;
-      console.log("Usuario desde breadcrumbs component: ", user);
-    })
-/*
-    this.router.events
-    .pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe(() => {
-      this.showBreadcrumb = !this.router.url.includes('/dashboard/customers/create-customer');
     });
-    */
-   
+
+    // Navegación específica para ventas
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        if (this.router.url.includes('/dashboard/sales')) {
+          this.currentView = 'Ventas'; // Setea la vista a "Ventas"
+        }
+      });
   }
-  editarProducto(){
-    if(this.selectedUser>0){
+
+  editarProducto() {
+    if (this.selectedUser > 0) {
       console.log('Editando usuario: ', this.selectedUser);
     }
   }
+
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
-
-
-  /*activeTab: string = 'manage'; // La pestaña por defecto es 'manage'
-
-  setActiveTab(tab: string) {
-    this.activeTab = tab;
-  }*/
 }
