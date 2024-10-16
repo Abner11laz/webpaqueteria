@@ -13,7 +13,8 @@ export class SidebarService {
           { titulo: 'Usuarios', url: 'users', icono: 'fa fa-users' },
           { titulo: 'Productos', url: 'products', icono: 'fa fa-cubes' },
           { titulo: 'Clientes', url: 'customers', icono: 'fa fa-address-book' },  // Cambié el ícono para diferenciarlo de productos
-          { titulo: 'Ventas', url: 'sales', icono: 'fa fa-shopping-cart' }  // Nueva opción agregada
+          { titulo: 'Ventas', url: 'sales', icono: 'fa fa-shopping-cart' } , // Nueva opción agregada
+         
         ]
       }
     ];

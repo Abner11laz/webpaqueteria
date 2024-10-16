@@ -4,7 +4,7 @@
         <h2 class="mb-4">Editar Usuario</h2>
       </div>
       <div class="card-body p-3">
-        <form [formGroup]="usereditForm" (ngSubmit)="onsubmitUser()">
+        <form [formGroup]="usereditForm" (ngSubmit)="onsubmiteditUser()">
           <div class="row">
             <!-- General Information -->
             <div class="col-md-6">
@@ -13,12 +13,12 @@
                 Nombre
                 <input
                   type="text"
-                  id="Nombre"
-                  formControlName="Nombre"
+                  id="nombre"
+                  formControlName="nombre"
                   class="form-control form-control-sm"
                   placeholder="Nombres"
                 />
-                <div *ngIf="usereditForm.get('Nombre')?.invalid && usereditForm.get('Nombre')?.touched">
+                <div *ngIf="usereditForm.get('nombre')?.invalid && usereditForm.get('nombre')?.touched">
                     <small>El nombre es obligatorio.</small>
                   </div>
               </div>
@@ -27,12 +27,12 @@
                 Apellido
                 <input
                   type="text"
-                  id="Apellido"
-                  formControlName="Apellido"
+                  id="apellido"
+                  formControlName="apellido"
                   class="form-control form-control-sm"
                   placeholder="Apellidos"
                 />
-                <div *ngIf="usereditForm.get('Apellido')?.invalid && usereditForm.get('Apellido')?.touched">
+                <div *ngIf="usereditForm.get('apellido')?.invalid && usereditForm.get('apellido')?.touched">
                     <small>El apellido es obligatorio.</small>
                   </div>
               </div>
@@ -41,15 +41,15 @@
                 Correo
                 <input
                   type="email"
-                  id="Correo"
-                  formControlName="Correo"
+                  id="correo"
+                  formControlName="correo"
                   class="form-control form-control-sm"
                   placeholder="ejemplo@me.com"
                   required
                 />
-                <div *ngIf="usereditForm.get('Correo')?.invalid && usereditForm.get('Correo')?.touched">
-                    <small *ngIf="usereditForm.get('Correo')?.hasError('required')">El correo es obligatorio.</small>
-                    <small *ngIf="usereditForm.get('Correo')?.hasError('email')">Debe ser un correo válido.</small>
+                <div *ngIf="usereditForm.get('correo')?.invalid && usereditForm.get('correo')?.touched">
+                    <small *ngIf="usereditForm.get('correo')?.hasError('required')">El correo es obligatorio.</small>
+                    <small *ngIf="usereditForm.get('correo')?.hasError('email')">Debe ser un correo válido.</small>
                   </div>
                   
               </div>
@@ -57,14 +57,14 @@
                 Contraseña
                 <input
                   type="password"
-                  id="Contraseña"
-                  formControlName="Contraseña"
+                  id="contraseña"
+                  formControlName="contraseña"
                   class="form-control form-control-sm"
                   placeholder="xxxxxxx"
                 />
-                <div *ngIf="usereditForm.get('Contraseña')?.invalid && usereditForm.get('Contraseña')?.touched">
-                    <small *ngIf="usereditForm.get('Contraseña')?.hasError('required')">La contraseña es obligatoria.</small>
-                    <small *ngIf="usereditForm.get('Contraseña')?.hasError('minlength')">Debe tener al menos 6 caracteres.</small>
+                <div *ngIf="usereditForm.get('contraseña')?.invalid && usereditForm.get('contraseña')?.touched">
+                    <small *ngIf="usereditForm.get('contraseña')?.hasError('required')">La contraseña es obligatoria.</small>
+                    <small *ngIf="usereditForm.get('contraseña')?.hasError('minlength')">Debe tener al menos 6 caracteres.</small>
                   </div>
               </div>
               
@@ -80,14 +80,14 @@
                 <input
                   type="tel"
                   pattern="[2-7]{1}[0-9]{7}"
-                  id="Telefono"
-                  formControlName="Telefono"
+                  id="telefono"
+                  formControlName="telefono"
                   class="form-control form-control-sm"
                   placeholder="(502)-xxxx-xxxx"
                 />
-                <div *ngIf="usereditForm.get('Telefono')?.invalid && usereditForm.get('Telefono')?.touched">
-                    <small *ngIf="usereditForm.get('Telefono')?.hasError('required')">El teléfono es obligatorio.</small>
-                    <small *ngIf="usereditForm.get('Telefono')?.hasError('pattern')">El teléfono debe contener solo números.</small>
+                <div *ngIf="usereditForm.get('telefono')?.invalid && usereditForm.get('telefono')?.touched">
+                    <small *ngIf="usereditForm.get('telefono')?.hasError('required')">El teléfono es obligatorio.</small>
+                    <small *ngIf="usereditForm.get('telefono')?.hasError('pattern')">El teléfono debe contener solo números.</small>
                   </div>
               </div>
   
@@ -95,8 +95,8 @@
                 Dirección
                 <input
                   type="text"
-                  id="Direccion"
-                  formControlName="Direccion"
+                  id="direccion"
+                  formControlName="direccion"
                   class="form-control form-control-sm"
                   placeholder="Ingrece dirección"
                 />
@@ -115,7 +115,7 @@
               <label>Accesos</label>
               <div class="form-group mb-4">
                Rol
-               <select id="RolID" formControlName="RolID" class="form-control form-control-sm">
+               <select id="rolID" formControlName="rolID" class="form-control form-control-sm">
                 <option value="0" disabled selected>[SELECCIONA UN ROL]</option>
                 <option value="1">ADMIN</option>
                 <option value="2">USER</option>
@@ -127,7 +127,7 @@
   
               <div class="form-group mb-3">
                 Acción
-                <select id="Accion" formControlName="Accion" class="form-control form-control-sm">
+                <select id="accion" formControlName="accion" class="form-control form-control-sm">
                     <option value="0" disabled  selected>[SELECCIONA UN PERFIL]</option>
                     <option value="C R U D">CREATE READ UPDATE DELETE</option>
                     <option value="R">READ</option>

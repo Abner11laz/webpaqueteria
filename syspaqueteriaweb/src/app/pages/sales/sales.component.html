@@ -1,113 +1,68 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Ventas</title>
-    <!-- Asegúrate de tener los estilos de Bootstrap incluidos -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
+
     <div class="container-fluid mt-2">
       <div class="card">
-        <div class="card-header py-2">
-          <h2 class="mb-4">Registrar Venta </h2>
+      <div class="header">
+        <div>
+            <label for="customerName">Customer Name</label>
+            <input type="text" id="customerName" placeholder="John Haddock Insurance Co.">
+
+            <label for="address1">Address</label>
+            <input type="text" id="address1" placeholder="10 High Tower Green">
+
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Manchester">
         </div>
-        <div class="card-body p-3">
-          <form id="ventaForm">
 
-            <!-- Información del Cliente -->
-            <div class="row">
-              <div class="col-md-6">
-                <label>Información del Cliente</label>
-                <div class="form-group mb-3">
-                  <label for="codigoCliente">Código Cliente:</label>
-                  <input type="number" id="codigoCliente" class="form-control form-control-sm" placeholder="Código Cliente" required>
-                </div>
+        <div>
+            <label for="contact">Contact</label>
+            <input type="text" id="contact" placeholder="Miss Patricia Doyle">
 
-                <div class="form-group mb-3">
-                  <label for="nombresCliente">Nombres:</label>
-                  <input type="text" id="nombresCliente" class="form-control form-control-sm" readonly>
-                </div>
+            <label for="postingDate">Posting Date</label>
+            <input type="date" id="postingDate" value="2016-01-18">
 
-                <div class="form-group mb-3">
-                  <label for="apellidosCliente">Apellidos:</label>
-                  <input type="text" id="apellidosCliente" class="form-control form-control-sm" readonly>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="direccionCliente">Dirección:</label>
-                  <input type="text" id="direccionCliente" class="form-control form-control-sm" readonly>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="telefonoCliente">Teléfono:</label>
-                  <input type="text" id="telefonoCliente" class="form-control form-control-sm" readonly>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="categoriaCliente">Categoría:</label>
-                  <input type="text" id="categoriaCliente" class="form-control form-control-sm" readonly>
-                </div>
-              </div>
-            </div>
-
-            <!-- Detalle de Venta -->
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <label>Detalle de Venta</label>
-                <div class="form-group mb-3">
-                  <label for="fechaVenta">Fecha de Venta:</label>
-                  <input type="date" id="fechaVenta" class="form-control form-control-sm" [value]="currentDate" readonly>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="producto">Producto:</label>
-                  <select id="producto" class="form-control form-control-sm" required>
-                    <option value="">Seleccione un producto</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group mb-3">
-                  <label for="codigoProducto">Código Producto:</label>
-                  <input type="text" id="codigoProducto" class="form-control form-control-sm" readonly>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="precioProducto">Precio:</label>
-                  <input type="number" id="precioProducto" class="form-control form-control-sm" readonly>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="cantidad">Cantidad:</label>
-                  <input type="number" id="cantidad" class="form-control form-control-sm" value="1" min="1" required>
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="totalVenta">Total Venta:</label>
-                  <input type="number" id="totalVenta" class="form-control form-control-sm" readonly>
-                </div>
-              </div>
-            </div>
-
-            <!-- Botón de acción -->
-            <div class="row mt-3">
-              <div class="col-md-12 text-right">
-                <button type="button" class="btn btn-sm btn-primary" id="generarVenta">Generar Venta</button>
-              </div>
-            </div>
-          </form>
+            <label for="dueDate">Due Date</label>
+            <input type="date" id="dueDate" value="2016-01-31">
         </div>
-      </div>
     </div>
 
-    <!-- Asegúrate de tener los scripts de Bootstrap incluidos -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    <div class="details">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item No.</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit of Measure</th>
+                    <th>Unit Price</th>
+                    <th>Line Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Search item...">
+                        <ul *ngIf="filteredItems.length">
+                            <li *ngFor="let item of filteredItems" (click)="selectItem(item)">{{ item.name }}</li>
+                        </ul>
+                    </td>
+                    <td><input type="text" value="Computer - Highline Package"></td>
+                    <td><input type="number" value="3"></td>
+                    <td><input type="text" value="PCS"></td>
+                    <td><input type="text" value="114.20"></td>
+                    <td><input type="text" value="342.60"></td>
+                </tr>
+                <!-- Repeat for more lines -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="totals">
+        <div><strong>Total Excl. VAT (GBP):</strong> 688.90</div>
+        <div><strong>Total VAT (GBP):</strong> 172.23</div>
+        <div><strong>Total Incl. VAT (GBP):</strong> 861.13</div>
+    </div>
+
+    <button class="btn">Create Corrective Credit Memo</button>
+    </div>
+    </div>
