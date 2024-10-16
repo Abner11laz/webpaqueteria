@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,9 @@ export class UserService {
   }
   setUser(userdataForm:any):Observable<any>{
     return this.httpclient.post(`${this.baseapiUri}/crear-o-actualizar`,userdataForm);
+  }
+  getUsers(puserId:number):Observable<any>{
+    return this.httpclient.get<any>(`${this.baseapiUri}/leer/${puserId}`);
   }
 
 }

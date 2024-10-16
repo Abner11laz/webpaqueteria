@@ -1,0 +1,68 @@
+
+
+    <div class="container-fluid mt-2">
+      <div class="card">
+      <div class="header">
+        <div>
+            <label for="customerName">Customer Name</label>
+            <input type="text" id="customerName" placeholder="John Haddock Insurance Co.">
+
+            <label for="address1">Address</label>
+            <input type="text" id="address1" placeholder="10 High Tower Green">
+
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Manchester">
+        </div>
+
+        <div>
+            <label for="contact">Contact</label>
+            <input type="text" id="contact" placeholder="Miss Patricia Doyle">
+
+            <label for="postingDate">Posting Date</label>
+            <input type="date" id="postingDate" value="2016-01-18">
+
+            <label for="dueDate">Due Date</label>
+            <input type="date" id="dueDate" value="2016-01-31">
+        </div>
+    </div>
+
+    <div class="details">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item No.</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit of Measure</th>
+                    <th>Unit Price</th>
+                    <th>Line Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Search item...">
+                        <ul *ngIf="filteredItems.length">
+                            <li *ngFor="let item of filteredItems" (click)="selectItem(item)">{{ item.name }}</li>
+                        </ul>
+                    </td>
+                    <td><input type="text" value="Computer - Highline Package"></td>
+                    <td><input type="number" value="3"></td>
+                    <td><input type="text" value="PCS"></td>
+                    <td><input type="text" value="114.20"></td>
+                    <td><input type="text" value="342.60"></td>
+                </tr>
+                <!-- Repeat for more lines -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="totals">
+        <div><strong>Total Excl. VAT (GBP):</strong> 688.90</div>
+        <div><strong>Total VAT (GBP):</strong> 172.23</div>
+        <div><strong>Total Incl. VAT (GBP):</strong> 861.13</div>
+    </div>
+
+    <button class="btn">Create Corrective Credit Memo</button>
+    </div>
+    </div>

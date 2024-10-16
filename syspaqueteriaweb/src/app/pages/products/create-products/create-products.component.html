@@ -1,0 +1,120 @@
+<form (ngSubmit)="onSubmit()" #productoForm="ngForm">
+  <div class="row">
+    <!-- Información del Producto -->
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label for="descripcionProducto">Descripción o Nombre del Producto:</label>
+        <input
+          type="text"
+          id="descripcionProducto"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.descripcion"
+          name="descripcion"
+          #descripcion="ngModel"
+          required
+        />
+        <div *ngIf="descripcion.invalid && descripcion.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="codigoProveedor">Código de Proveedor:</label>
+        <input
+          type="text"
+          id="codigoProveedor"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.codigoProveedor"
+          name="codigoProveedor"
+          #codigoProveedor="ngModel"
+          required
+        />
+        <div *ngIf="codigoProveedor.invalid && codigoProveedor.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+        <input
+          type="date"
+          id="fechaVencimiento"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.fechaVencimiento"
+          name="fechaVencimiento"
+          #fechaVencimiento="ngModel"
+          required
+        />
+        <div *ngIf="fechaVencimiento.invalid && fechaVencimiento.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label for="ubicacionFisica">Nombre de Ubicación:</label>
+        <input
+          type="text"
+          id="ubicacionFisica"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.ubicacionFisica"
+          name="ubicacionFisica"
+          #ubicacionFisica="ngModel"
+          required
+        />
+        <div *ngIf="ubicacionFisica.invalid && ubicacionFisica.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="cantidad">Cantidad a Registrar:</label>
+        <input
+          type="number"
+          id="cantidad"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.cantidad"
+          name="cantidad"
+          #cantidad="ngModel"
+          required
+          min="1"
+        />
+        <div *ngIf="cantidad.invalid && cantidad.touched" class="text-danger">
+          Este campo es obligatorio y debe ser mayor a 0.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="precio">Precio:</label>
+        <input
+          type="number"
+          id="precio"
+          class="form-control form-control-sm"
+          [(ngModel)]="producto.precio"
+          name="precio"
+          #precio="ngModel"
+          required
+          min="0.01"
+        />
+        <div *ngIf="precio.invalid && precio.touched" class="text-danger">
+          Este campo es obligatorio y debe ser mayor a 0.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón de acción -->
+  <div class="row mt-3">
+    <div class="col-md-12 text-right">
+      <button
+        type="submit"
+        class="btn btn-sm btn-primary"
+        id="guardarProducto"
+        [disabled]="productoForm.invalid"
+      >
+        Guardar Producto
+      </button>
+    </div>
+  </div>
+</form>

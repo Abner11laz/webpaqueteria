@@ -13,8 +13,12 @@ import { HomeComponent } from './customers/components/home/home.component';
 import { CreateUserComponent } from './users/components/create-user/create-user.component';
 import { HomeUserComponent } from './users/components/home-user/home-user.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { SalesComponent } from './sales/sales.component';
+import { CreateProductsComponent } from './products/create-products/create-products.component';
+import { FormsModule } from '@angular/forms';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 import { EditUserComponent } from './users/components/edit-user/edit-user.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -26,6 +30,8 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
     HomeComponent,
     CreateUserComponent,
     HomeUserComponent,
+    SalesComponent,
+    CreateProductsComponent,
     EditCustomerComponent,
     EditUserComponent
   ],
@@ -34,18 +40,21 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
-    
+    FormsModule,
   ],
-  providers:[
+  providers: [
     provideHttpClient(withFetch())
   ],
-  exports:[
+  exports: [
     DashboardComponent,
     UsersComponent,
     ProductsComponent,
     CustomersComponent,
-    CreateCustomerComponent
-   
+    CreateCustomerComponent,
+    SalesComponent,
+    CreateProductsComponent,
+    EditCustomerComponent,
+    EditUserComponent
   ]
 })
 export class PagesModule { }

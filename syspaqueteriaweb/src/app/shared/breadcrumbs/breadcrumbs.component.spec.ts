@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BreadcrumbsComponent } from './breadcrumbs.component';
 
 describe('BreadcrumbsComponent', () => {
@@ -19,5 +18,10 @@ describe('BreadcrumbsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should handle Sales view correctly', () => {
+    component.currentView = 'Ventas';
+    expect(component.currentView).toEqual('Ventas');
   });
 });
