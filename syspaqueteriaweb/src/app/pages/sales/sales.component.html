@@ -1,68 +1,103 @@
-
-
-    <div class="container-fluid mt-2">
-      <div class="card">
-      <div class="header">
-        <div>
-            <label for="customerName">Customer Name</label>
-            <input type="text" id="customerName" placeholder="John Haddock Insurance Co.">
-
-            <label for="address1">Address</label>
-            <input type="text" id="address1" placeholder="10 High Tower Green">
-
-            <label for="city">City</label>
-            <input type="text" id="city" placeholder="Manchester">
+<div class="container-fluid mt-2">
+  <div class="card">
+    <div class="card-body p-3">
+      
+     
+      <form>
+        <h5>General</h5>
+        <!-- General Section -->
+        <div class="general-info">
+          <div class="left-side">
+            Sell-to Customer No.
+            <input id="sellToCustomerNo" type="text" [(ngModel)]="salesOrder.sellToCustomerNo" />
+    
+           Sell-to Contact No.
+            <input id="sellToContactNo" type="text" [(ngModel)]="salesOrder.sellToContactNo" />
+    
+            Sell-to Customer Name
+            <input id="sellToCustomerName" type="text" [(ngModel)]="salesOrder.sellToCustomerName" />
+    
+            Sell-to Address
+            <input id="sellToAddress" type="text" [(ngModel)]="salesOrder.sellToAddress" />
+    
+           Sell-to City
+            <input id="sellToCity" type="text" [(ngModel)]="salesOrder.sellToCity" />
+    
+           Sell-to Post Code
+            <input id="sellToPostCode" type="text" [(ngModel)]="salesOrder.sellToPostCode" />
+          </div>
+    
+          <div class="right-side">
+          Sell-to Contact
+            <input id="sellToContact" type="text" [(ngModel)]="salesOrder.sellToContact" />
+    
+           rder Date
+            <input id="orderDate" type="date" [(ngModel)]="salesOrder.orderDate" />
+    
+           Salesperson Code
+            <input id="salespersonCode" type="text" [(ngModel)]="salesOrder.salespersonCode" />
+    
+           Campaign No.
+            <input id="campaignNo" type="text" [(ngModel)]="salesOrder.campaignNo" />
+    
+           Responsibility Center
+            <input id="responsibilityCenter" type="text" [(ngModel)]="salesOrder.responsibilityCenter" />
+    
+            Status
+            <select id="status" [(ngModel)]="salesOrder.status">
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
         </div>
-
-        <div>
-            <label for="contact">Contact</label>
-            <input type="text" id="contact" placeholder="Miss Patricia Doyle">
-
-            <label for="postingDate">Posting Date</label>
-            <input type="date" id="postingDate" value="2016-01-18">
-
-            <label for="dueDate">Due Date</label>
-            <input type="date" id="dueDate" value="2016-01-31">
-        </div>
-    </div>
-
-    <div class="details">
+    
+        <!-- Sales Lines Section -->
+        <h5>Lineas de venta</h5>
         <table>
-            <thead>
-                <tr>
-                    <th>Item No.</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Unit of Measure</th>
-                    <th>Unit Price</th>
-                    <th>Line Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="text" placeholder="Search item...">
-                        <ul *ngIf="filteredItems.length">
-                            <li *ngFor="let item of filteredItems" (click)="selectItem(item)">{{ item.name }}</li>
-                        </ul>
-                    </td>
-                    <td><input type="text" value="Computer - Highline Package"></td>
-                    <td><input type="number" value="3"></td>
-                    <td><input type="text" value="PCS"></td>
-                    <td><input type="text" value="114.20"></td>
-                    <td><input type="text" value="342.60"></td>
-                </tr>
-                <!-- Repeat for more lines -->
-            </tbody>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Description</th>
+              <th>Location Code</th>
+              <th>Quantity</th>
+              <th>Unit of Measure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let line of salesOrder.lines">
+              <td>
+                <input type="text" [(ngModel)]="line.no" />
+              </td>
+              <td>{{ line.description }}</td>
+              <td>
+                <input type="text" [(ngModel)]="line.locationCode" />
+              </td>
+              <td>
+                <input type="number" [(ngModel)]="line.quantity" />
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="line.unitOfMeasure" />
+              </td>
+            </tr>
+          </tbody>
         </table>
-    </div>
+    
+        <!-- Totals Section -->
+        <div class="totals">
+          Invoice Discount Amount
+          <input id="invoiceDiscountAmount" type="number" [(ngModel)]="salesOrder.invoiceDiscountAmount" />
+    
+        Total Excl. VAT (GBP)
+          <input id="totalExclVAT" type="number" [(ngModel)]="salesOrder.totalExclVAT" />
+    
+        Total VAT (GBP)
+          <input id="totalVAT" type="number" [(ngModel)]="salesOrder.totalVAT" />
+    
+          Total Incl. VAT (GBP)
+          <input id="totalInclVAT" type="number" [(ngModel)]="salesOrder.totalInclVAT" />
+        </div>
+      </form>
 
-    <div class="totals">
-        <div><strong>Total Excl. VAT (GBP):</strong> 688.90</div>
-        <div><strong>Total VAT (GBP):</strong> 172.23</div>
-        <div><strong>Total Incl. VAT (GBP):</strong> 861.13</div>
     </div>
-
-    <button class="btn">Create Corrective Credit Memo</button>
-    </div>
-    </div>
+  </div>
+</div>
