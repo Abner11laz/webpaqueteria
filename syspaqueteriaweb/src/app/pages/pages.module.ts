@@ -18,6 +18,8 @@ import { CreateProductsComponent } from './products/create-products/create-produ
 import { FormsModule } from '@angular/forms';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 import { EditUserComponent } from './users/components/edit-user/edit-user.component';
+import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component'; // Componente
+import { SuppliersComponent } from './suppliers/suppliers.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
     SalesComponent,
     CreateProductsComponent,
     EditCustomerComponent,
-    EditUserComponent
+    EditUserComponent,
+    CreateSuppliersComponent,
+    SuppliersComponent
   ],
   imports: [
     CommonModule,

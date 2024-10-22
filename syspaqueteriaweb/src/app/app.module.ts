@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { NopageFoundComponent } from './nopage-found/nopage-found.component';
 import { FormsModule } from '@angular/forms';
+ // Importa el componente aquí
 
 @NgModule({
   declarations: [

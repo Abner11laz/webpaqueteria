@@ -19,9 +19,9 @@ export class BreadcrumbsComponent {
   isDeleted: boolean = false;
 
   constructor(
-    private ribbonService: BreadcrumbsService, 
-    private route: ActivatedRoute, 
-    private router: Router, 
+    private ribbonService: BreadcrumbsService,
+    private route: ActivatedRoute,
+    private router: Router,
     private customerService: CustomerService
   ) {}
 
@@ -31,6 +31,14 @@ export class BreadcrumbsComponent {
 
   navigateToCreateUser() {
     this.router.navigate(['./users/create-user'], { relativeTo: this.route });
+  }
+
+  navigateToCreateProducts() {
+    this.router.navigate(['./products/create'], { relativeTo: this.route });
+  }
+
+  navigateToCreateSuppliers() {
+    this.router.navigate(['./suppliers/create'], { relativeTo: this.route });
   }
 
   ngOnInit(): void {
@@ -95,7 +103,7 @@ export class BreadcrumbsComponent {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, eliminarlo',
         cancelButtonText: 'Cancelar'
-      }).then((result) => {
+      }).then((result: { isConfirmed: any; }) => {
         if (result.isConfirmed) {
           this.deleteCustomer();
         }

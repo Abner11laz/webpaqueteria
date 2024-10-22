@@ -13,8 +13,14 @@ export class SidebarService {
           { titulo: 'Usuarios', url: 'users', icono: 'fa fa-users' },
           { titulo: 'Productos', url: 'products', icono: 'fa fa-cubes' },
           { titulo: 'Clientes', url: 'customers', icono: 'fa fa-address-book' },  // Cambié el ícono para diferenciarlo de productos
+<<<<<<< Updated upstream
           { titulo: 'Ventas', url: 'sales', icono: 'fa fa-shopping-cart' } , // Nueva opción agregada
          
+=======
+          { titulo: 'Ventas', url: 'sales', icono: 'fa fa-shopping-cart' },  // Nueva opción agregada
+          { titulo: 'Proveedores', url: 'suppliers', icono: 'fa fa-truck' },  // Nueva opción agregada para proveedores
+          { titulo: 'Reportes', url: 'reports', icono: 'fa fa-chart-bar' }    // Nueva opción para Reportes
+>>>>>>> Stashed changes
         ]
       }
     ];

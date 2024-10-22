@@ -15,6 +15,8 @@ import { SalesComponent } from './sales/sales.component';  // Importa el compone
 import { CreateProductsComponent } from './products/create-products/create-products.component';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 import { EditUserComponent } from './users/components/edit-user/edit-user.component';
+import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,8 @@ const routes: Routes = [
       },
       { path: 'products', component: ProductsComponent },
       { path: 'products/create', component: CreateProductsComponent },
+      { path: 'suppliers', component: SuppliersComponent },
+      { path: 'suppliers/create', component: CreateSuppliersComponent },
       {
         path: 'customers',
         component: CustomersComponent,
@@ -43,7 +47,7 @@ const routes: Routes = [
           { path: 'edit-customer/:id', component: EditCustomerComponent }
         ]
       },
-      { 
+      {
         path: 'sales',
         component: SalesComponent
       }

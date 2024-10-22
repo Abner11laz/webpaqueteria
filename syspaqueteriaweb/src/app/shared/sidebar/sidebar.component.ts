@@ -6,31 +6,33 @@ import { BreadcrumbsService } from '../../services/breadcrumbs.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css'] // Corregido el typo (styleUrl -> styleUrls)
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   showBreadcrumb: boolean = true;
-menuItem?:any[];
-constructor(private sideBarServices: SidebarService, private router:Router, private ribbonService: BreadcrumbsService) {
-  this.menuItem = this.sideBarServices.menu;
-}
-changeView(view: string) {
-  this.ribbonService.setView(view); // Cambia la vista seleccionada
-}
-ngOnInit(): void {
+  menuItem?: any[];
+  nombreUsuario: string = ''; // Nueva propiedad para almacenar el nombre del usuario logueado
 
-  this.ribbonService.breadcrumbVisibility$.subscribe(visible =>{
+  constructor(
+    private sideBarServices: SidebarService,
+    private router: Router,
+    private ribbonService: BreadcrumbsService
+  ) {
+    this.menuItem = this.sideBarServices.menu;
+  }
 
-    this.showBreadcrumb = visible;
-  })
-  /*
-  this.ribbonService.currentView$.subscribe(view => {
-    this.currentView = view;
-    console.log("Desde breadcrumbs component ts ->",view);  
+  // Método para cambiar la vista
+  changeView(view: string) {
+    this.ribbonService.setView(view); // Cambia la vista seleccionada
+  }
 
-  });*/
-}
+  ngOnInit(): void {
+    // Recuperar el nombre del usuario desde localStorage
+    this.nombreUsuario = localStorage.getItem('nombreUsuario') || 'Admin';  // Si no existe, se muestra "Admin" por defecto
 
-
-
+    // Suscribirse a la visibilidad del breadcrumb
+    this.ribbonService.breadcrumbVisibility$.subscribe((visible) => {
+      this.showBreadcrumb = visible;
+    });
+  }
 }

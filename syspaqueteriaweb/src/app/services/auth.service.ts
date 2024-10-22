@@ -14,29 +14,29 @@ export class AuthService {
 
   constructor(private http:HttpClient, private router: Router) { }
 
-  login(logData:any): Observable<any>{
-    
-    console.log(logData);
+  login(logData: any): Observable<any> {
+    const headers = new HttpHeaders({ 'content-type': 'application/json' });
 
-    const headers = new HttpHeaders({'content-type':'application/json'});
-   
-    return this.http.post<any>(this.apiUrl, logData,{headers}).pipe(
+    return this.http.post<any>(this.apiUrl, logData, { headers }).pipe(
       tap(response => {
-        if(response.usuarioID >0){
-          this.setSession(response.correo);
+        if (response.usuarioID > 0) {
+          this.setSession(response);  // Pasamos toda la respuesta para guardar el nombre
         }
       })
     );
   }
-  private setSession(correo: string){
-    const now = new Date();
-    console.log("time is: ", now.getTime());
-  now.setTime(now.getTime() + (5 *60*1000)); 
-    const expira = "expires=" + now.toUTCString();
-  document.cookie = `usuario=${correo}; ${expira}; path=/`;
 
-  console.log("Cookie creada: ", document.cookie);
-  }
+ private setSession(response: any) {
+  const now = new Date();
+  now.setTime(now.getTime() + (5 * 60 * 1000)); // Expira en 5 minutos
+  const expira = "expires=" + now.toUTCString();
+
+  document.cookie = `usuario=${response.correo}; ${expira}; path=/`;
+
+  // Guardar también el nombre del usuario en localStorage
+  localStorage.setItem('nombreUsuario', response.nombre);
+}
+
   isLoggedIn(): boolean {
     const cookie = this.getCookie('usuario');
     return cookie !== null;
@@ -49,7 +49,7 @@ export class AuthService {
     this.deleteCookie('usuario');
     this.router.navigate(['/login']);
   }
-  
+
   private deleteCookie(name: string) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
