@@ -22,7 +22,10 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'; // Si estás usando <mat-input>
 import { MatSelectModule } from '@angular/material/select'; // Si estás usando <mat-select>
-import { MatCardModule } from '@angular/material/card'; // Importa MatCardModule
+import { MatCardModule } from '@angular/material/card';
+import { HomeSalesComponent } from './sales/components/home-sales/home-sales.component';
+import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
+import { NewSalesComponent } from './sales/components/new-sales/new-sales.component'; // Importa MatCardModule
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { MatCardModule } from '@angular/material/card'; // Importa MatCardModule
     SalesComponent,
     CreateProductsComponent,
     EditCustomerComponent,
-    EditUserComponent
+    EditUserComponent,
+    HomeSalesComponent,
+    PendingsSalesComponent,
+    NewSalesComponent
   ],
   imports: [
     CommonModule,

@@ -15,6 +15,9 @@ import { SalesComponent } from './sales/sales.component';  // Importa el compone
 import { CreateProductsComponent } from './products/create-products/create-products.component';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 import { EditUserComponent } from './users/components/edit-user/edit-user.component';
+import { HomeSalesComponent } from './sales/components/home-sales/home-sales.component';
+import { NewSalesComponent } from './sales/components/new-sales/new-sales.component';
+import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
 
 const routes: Routes = [
   {
@@ -45,7 +48,12 @@ const routes: Routes = [
       },
       { 
         path: 'sales',
-        component: SalesComponent
+        component: SalesComponent,
+        children:[
+          {path: '', component: HomeSalesComponent},
+          {path: 'new-sales', component: NewSalesComponent},
+          {path: 'pendings-sales', component: PendingsSalesComponent}
+        ]
       }
     ]
   }

@@ -1,0 +1,27 @@
+.ribbon {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  .ribbon-group {
+    display: flex; /* Cambia la alineación a horizontal */
+    justify-content: flex-start; /* Alinea los botones hacia la izquierda */
+  }
+  
+  .ribbon-group .btn {
+    margin-right: 10px; /* Espacio entre botones */
+    width: auto; /* Permite que el ancho se ajuste al contenido */
+    text-align: center; /* Centra el texto dentro de los botones */
+    padding: 5px 15px; /* Ajusta el relleno del botón */
+  }
+  
+  .ribbon .btn i {
+    margin-right: 5px; /* Espacio entre icono y texto */
+  }
+  
+  .nav-tabs .nav-link.active {
+    background-color: #007bff;
+    color: white;
+  }

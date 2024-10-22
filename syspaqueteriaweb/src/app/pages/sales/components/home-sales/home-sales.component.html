@@ -1,0 +1,88 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="ribbon">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="activeTab === 'manage'"
+                (click)="setActiveTab('manage')"
+                >Manage</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [class.active]="activeTab === 'order'"
+                (click)="setActiveTab('order')"
+                >Order</a
+              >
+            </li>
+          </ul>
+
+          <div class="ribbon-content mt-3">
+            <div *ngIf="activeTab === 'manage'" class="ribbon-group">
+              <button class="btn btn-light btn-sm d-block mb-1" (click)="navigateToCreateSales()">
+                <i class="fas fa-plus"></i> Crear Venta
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-eye"></i> Ver Venta
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-edit"></i> Editar Venta
+              </button>
+              <button class="btn btn-light btn-sm d-block">
+                <i class="fas fa-trash-alt"></i> Asignar Ruta
+              </button>
+            </div>
+
+            <!-- Order Tab Content -->
+            <div *ngIf="activeTab === 'order'" class="ribbon-group">
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-file-alt"></i> Crear Pedido de Venta
+              </button>
+              <button class="btn btn-light btn-sm d-block mb-1">
+                <i class="fas fa-file-invoice"></i> Crear Factura
+              </button>
+              <button class="btn btn-light btn-sm d-block">
+                <i class="fas fa-history"></i> Movimientos de Cliente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumbs -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+<div class="container-fluid mt-4">
+  <!-- <div *ngIf="isLoading; else tableTemplate">
+       <p>Cargando usuarios...</p>
+     </div>-->
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Código de cliente</th>
+        <th>Nombre de cliente</th>
+        <th>Apellido de cliente</th>
+        <th>NIT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Abner</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
