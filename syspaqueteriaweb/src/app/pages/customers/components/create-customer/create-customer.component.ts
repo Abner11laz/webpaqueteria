@@ -8,8 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-customer',
-  templateUrl: './create-customer.component.html',
-  styleUrl: './create-customer.component.css'
+  templateUrl: './create-customer.component.html'
 })
 export class CreateCustomerComponent implements OnInit {
   customerForm!: FormGroup;
@@ -33,9 +32,9 @@ export class CreateCustomerComponent implements OnInit {
       nIT: ['', Validators.required],
       categoriaCliente:['', Validators.required],
       accion:['', Validators.required]
-      
+
     });
-    
+
     this.breadcrumbService.setBreadcrumbVisibility(false);
     }
     onSubmit(): void {
@@ -43,11 +42,11 @@ export class CreateCustomerComponent implements OnInit {
       if(this.customerForm.valid){
         const customerdataForm = this.customerForm.value;
         this.customerService.setCustomer(customerdataForm).subscribe((response:any)=>{
-        
+
             console.log("Cliente registrado con exito");
             this.router.navigate(['dashboard/customers']);
-          
-         
+
+
         },
       (error)=>{
         console.log("Error al crear el cliente ", error);
@@ -55,7 +54,7 @@ export class CreateCustomerComponent implements OnInit {
       }else{
         this.customerForm.markAllAsTouched();
       }
-   
+
   }
 
 }
