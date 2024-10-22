@@ -26,11 +26,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item" *ngFor="let subMenu of item.submenu">
                 <a [routerLink]="subMenu.url" routerLinkActive="router-link-active" style="cursor:pointer;" class="nav-link" (click)="changeView(subMenu.titulo)">
-
-
                   <i class="{{subMenu.icono}}"></i>
-                  <p class="m1-2"> {{subMenu.titulo}}</p>
+                  <p class="m1-2">{{subMenu.titulo}}</p>
                 </a>
+            
+                <!-- Submenú (si existe) -->
+                <ul *ngIf="subMenu.submenu" class="nav nav-treeview">
+                  <li class="nav-item" *ngFor="let subSubMenu of subMenu.submenu">
+                    <a [routerLink]="subSubMenu.url" routerLinkActive="router-link-active" style="cursor:pointer;" class="nav-link" (click)="changeView(subSubMenu.titulo)">
+                      <i class="{{subSubMenu.icono}}"></i>
+                      <p class="m1-2">{{subSubMenu.titulo}}</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
