@@ -21,6 +21,11 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
 import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component'; // Componente
 import { SuppliersComponent } from './suppliers/suppliers.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'; // Si estás usando <mat-input>
+import { MatSelectModule } from '@angular/material/select'; // Si estás usando <mat-select>
+import { MatCardModule } from '@angular/material/card'; // Importa MatCardModule
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -45,6 +50,10 @@ import { SuppliersComponent } from './suppliers/suppliers.component';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [
     provideHttpClient(withFetch())

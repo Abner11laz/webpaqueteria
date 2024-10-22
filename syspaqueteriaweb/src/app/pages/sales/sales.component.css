@@ -1,61 +1,99 @@
-.container {
+/* Estilos generales */
+.sales-order {
     width: 80%;
-    margin: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-.header {
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* Tamaño de fuente reducido */
+  }
+  
+  .sales-order h2 {
+    font-weight: bold;
+    color: #0056b3;
+    font-size: 18px; /* Tamaño de fuente reducido */
+    margin-bottom: 15px;
+  }
+  
+  .general-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-}
-.header div {
-    width: 48%;
-}
-.header input, .header select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.header label {
-    display: block;
-    margin-bottom: 5px;
+  }
+  
+  .general-info label {
     font-weight: bold;
-}
-.details {
-    margin-bottom: 20px;
-}
-.details table {
+    margin-top: 8px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  .general-info input, 
+  .general-info select {
+    width: 100%;
+    padding: 4px;
+    margin-top: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  .right-side, .left-side {
+    width: 48%;
+  }
+  
+  /* Estilos de la tabla de líneas */
+  table {
     width: 100%;
     border-collapse: collapse;
-}
-.details table, th, td {
+    margin-top: 15px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  table th, 
+  table td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
-}
-.details th {
-    background-color: #f2f2f2;
-}
-.totals {
-    text-align: right;
-    margin-bottom: 20px;
-}
-.totals div {
-    margin-bottom: 10px;
-}
-.btn {
-    padding: 10px 20px;
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.btn:hover {
-    background-color: #005fa3;
-}
+  }
+  
+  table th {
+    background-color: #f9f9f9;
+  }
+  
+  table input {
+    width: 100%;
+    padding: 4px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  /* Sección de totales */
+  .totals {
+    margin-top: 15px;
+  }
+  
+  .totals label {
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  .totals input {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px; /* Tamaño de fuente reducido */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .general-info {
+      flex-direction: column;
+    }
+    
+    .right-side, .left-side {
+      width: 100%;
+    }
+  }
