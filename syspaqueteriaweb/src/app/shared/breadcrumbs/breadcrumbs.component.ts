@@ -37,10 +37,7 @@ export class BreadcrumbsComponent {
     this.router.navigate(['./products/create'], { relativeTo: this.route });
   }
 
-  navigateToCreateSuppliers() {
-    this.router.navigate(['./suppliers/create'], { relativeTo: this.route });
-  }
-
+ 
   ngOnInit(): void {
     this.ribbonService.setBreadcrumbVisibility(false);
     this.ribbonService.currentView$.subscribe(view => {

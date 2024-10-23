@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service'; // Ajusta la ruta de acuerdo a tu estructura de carpetas
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
  // Importa el servicio
 
 @Component({
@@ -11,13 +12,17 @@ import { ProductsService } from '../../services/products.service'; // Ajusta la 
 export class ProductsComponent implements OnInit {
 
   productos: any[] = [];  // Inicializamos como un array vacío
-
-  constructor(private productsService: ProductsService) { }
+  activeTab: string = 'manage'; // Pestaña activa inicial
+  constructor(private productsService: ProductsService, private route: ActivatedRoute,
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.loadProductos();  // Llamamos al método al iniciar el componente
+    this.activeTab = 'manage'; // Cambia la pestaña activa cuando cambia la vista
   }
-
+  navigateToCreateProducts() {
+    this.router.navigate(['./products/create'], { relativeTo: this.route });
+  }
   loadProductos(): void {
     this.productsService.getProductos().subscribe(
       (data) => {
@@ -29,5 +34,8 @@ export class ProductsComponent implements OnInit {
       }
     );
 
+  }
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
   }
 }

@@ -27,7 +27,8 @@ import { HomeSalesComponent } from './sales/components/home-sales/home-sales.com
 import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
 import { NewSalesComponent } from './sales/components/new-sales/new-sales.component'; // Importa MatCardModule
 import { SuppliersComponent } from './suppliers/suppliers.component';
-import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component';
+import { CreateSuppliersComponent } from './suppliers/component/create-suppliers/create-suppliers.component';
+import { HomeSuppliersComponent } from './suppliers/component/home-suppliers/home-suppliers.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-su
     PendingsSalesComponent,
     NewSalesComponent,
     SuppliersComponent,
-    CreateSuppliersComponent
+    CreateSuppliersComponent,
+    HomeSuppliersComponent
   ],
   imports: [
     CommonModule,

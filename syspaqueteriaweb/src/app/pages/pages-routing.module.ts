@@ -19,7 +19,8 @@ import { HomeSalesComponent } from './sales/components/home-sales/home-sales.com
 import { NewSalesComponent } from './sales/components/new-sales/new-sales.component';
 import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
-import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component';
+import { CreateSuppliersComponent } from './suppliers/component/create-suppliers/create-suppliers.component';
+import { HomeSuppliersComponent } from './suppliers/component/home-suppliers/home-suppliers.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,7 @@ const routes: Routes = [
         path:'suppliers',
         component: SuppliersComponent,
         children:[
-          {path: '', component:SuppliersComponent},
+          {path: '', component:HomeSuppliersComponent},
           {path:'create-suppliers', component:CreateSuppliersComponent}
         ]
       }

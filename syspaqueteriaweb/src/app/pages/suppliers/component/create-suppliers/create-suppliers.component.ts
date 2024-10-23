@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SuppliersService } from '../../../services/suppliers.service';
+import { SuppliersService } from '../../../../services/suppliers.service';
 
 @Component({
   selector: 'app-create-suppliers',

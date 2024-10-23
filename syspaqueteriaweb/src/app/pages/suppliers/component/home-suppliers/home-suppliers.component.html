@@ -1,0 +1,62 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-3">
+        <div class="col-12">
+          <div class="ribbon">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="activeTab === 'Administrar'" (click)="setActiveTab('Administrar')">Administrar</a>
+              </li>
+            </ul>
+
+            <div class="ribbon-content mt-3">
+              <div *ngIf="activeTab === 'Administrar'" class="ribbon-group">
+                <button
+                  class="btn btn-light btn-sm d-block mb-1"
+                  [routerLink]="['/dashboard', 'suppliers', 'create-suppliers']"
+                  >
+                  <i class="fas fa-eye"></i> Crear Proveedor
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="content-header">
+  <div class="container mt-4">
+   
+      
+     
+        <table
+          class="table table-bordered table-hover"
+        >
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID Proveedor</th>
+              <th scope="col">Código Proveedor</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+              <td>{{ proveedor.proveedorID }}</td>
+              <td>{{ proveedor.codigoProveedor }}</td>
+              <td>{{ proveedor.nombreProveedor }}</td>
+              <td>{{ proveedor.telefonoProveedor }}</td>
+              <td>{{ proveedor.direccionProveedor }}</td>
+              <td>{{ proveedor.correoProveedor }}</td>
+              <td>{{ proveedor.estado === "V" ? "Vigente" : "No Vigente" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      
+    
+  </div>
+</section>
