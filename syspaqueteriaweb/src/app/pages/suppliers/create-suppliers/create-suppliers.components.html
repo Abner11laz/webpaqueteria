@@ -1,0 +1,86 @@
+<form (ngSubmit)="onSubmit()" #proveedorForm="ngForm">
+  <div class="row">
+    <!-- Información del Proveedor -->
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label for="nombreProveedor">Nombre del Proveedor:</label>
+        <input
+          type="text"
+          id="nombreProveedor"
+          class="form-control form-control-sm"
+          [(ngModel)]="proveedor.nombre"
+          name="nombre"
+          #nombre="ngModel"
+          required
+        />
+        <div *ngIf="nombre.invalid && nombre.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="telefonoProveedor">Teléfono:</label>
+        <input
+          type="tel"
+          id="telefonoProveedor"
+          class="form-control form-control-sm"
+          [(ngModel)]="proveedor.telefono"
+          name="telefono"
+          #telefono="ngModel"
+          required
+        />
+        <div *ngIf="telefono.invalid && telefono.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label for="direccionProveedor">Dirección:</label>
+        <input
+          type="text"
+          id="direccionProveedor"
+          class="form-control form-control-sm"
+          [(ngModel)]="proveedor.direccion"
+          name="direccion"
+          #direccion="ngModel"
+          required
+        />
+        <div *ngIf="direccion.invalid && direccion.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="correoProveedor">Correo Electrónico:</label>
+        <input
+          type="email"
+          id="correoProveedor"
+          class="form-control form-control-sm"
+          [(ngModel)]="proveedor.correo"
+          name="correo"
+          #correo="ngModel"
+          required
+        />
+        <div *ngIf="correo.invalid && correo.touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón de acción -->
+  <div class="row mt-3">
+    <div class="col-md-12 text-right">
+      <button
+        type="submit"
+        class="btn btn-sm btn-primary"
+        id="guardarProveedor"
+        [disabled]="proveedorForm.invalid"
+      >
+        Guardar Proveedor
+      </button>
+    </div>
+  </div>
+</form>

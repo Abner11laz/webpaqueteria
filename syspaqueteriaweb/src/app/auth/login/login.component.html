@@ -2,20 +2,20 @@
 <div class="login-page">
 <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Desaweb</b>UMG</a>
+      <a ><b>Desaweb</b>UMG</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Inicia sesión para ingresar al sistema</p>
-  
+
         <form [formGroup]="loginForm" (ngSubmit)="onSubmilogin()"  method="post">
           <div class="input-group mb-3">
-            <input 
+            <input
             type="email"
             id="correo"
-            formControlName="correo" 
-            class="form-control" 
+            formControlName="correo"
+            class="form-control"
             placeholder="Email">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -27,7 +27,7 @@
             <input type="password"
              class="form-control"
              id="contraseña"
-             formControlName="contraseña" 
+             formControlName="contraseña"
              placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -51,9 +51,9 @@
             <!-- /.col -->
           </div>
         </form>
-  
-       
-        
+
+
+
       </div>
       <!-- /.login-card-body -->
     </div>

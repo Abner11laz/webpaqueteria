@@ -8,6 +8,7 @@ import { NopageFoundComponent } from './nopage-found/nopage-found.component';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+
 @NgModule({
   declarations: [
     AppComponent,
