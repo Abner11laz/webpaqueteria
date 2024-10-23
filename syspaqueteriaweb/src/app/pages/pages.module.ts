@@ -26,6 +26,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeSalesComponent } from './sales/components/home-sales/home-sales.component';
 import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
 import { NewSalesComponent } from './sales/components/new-sales/new-sales.component'; // Importa MatCardModule
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { NewSalesComponent } from './sales/components/new-sales/new-sales.compon
     EditUserComponent,
     HomeSalesComponent,
     PendingsSalesComponent,
-    NewSalesComponent
+    NewSalesComponent,
+    SuppliersComponent,
+    CreateSuppliersComponent
   ],
   imports: [
     CommonModule,

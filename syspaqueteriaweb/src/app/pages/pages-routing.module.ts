@@ -18,6 +18,8 @@ import { EditUserComponent } from './users/components/edit-user/edit-user.compon
 import { HomeSalesComponent } from './sales/components/home-sales/home-sales.component';
 import { NewSalesComponent } from './sales/components/new-sales/new-sales.component';
 import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { CreateSuppliersComponent } from './suppliers/create-suppliers/create-suppliers.component';
 
 const routes: Routes = [
   {
@@ -53,6 +55,14 @@ const routes: Routes = [
           {path: '', component: HomeSalesComponent},
           {path: 'new-sales', component: NewSalesComponent},
           {path: 'pendings-sales', component: PendingsSalesComponent}
+        ]
+      },
+      {
+        path:'suppliers',
+        component: SuppliersComponent,
+        children:[
+          {path: '', component:SuppliersComponent},
+          {path:'create-suppliers', component:CreateSuppliersComponent}
         ]
       }
     ]
