@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BreadcrumbsService } from '../../../../services/breadcrumbs.service';
 
 @Component({
   selector: 'app-home-sales',
@@ -9,10 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeSalesComponent {
   currentView: string = 'Dashboard'; // Vista inicial
   activeTab: string = 'manage'; // Pestaña activa inicial
-  constructor(private router: Router,private route:ActivatedRoute){}
+  constructor(private router: Router,private route:ActivatedRoute, private ribbonservice:BreadcrumbsService){}
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
+    this.ribbonservice.setBreadcrumbVisibility(false);
   }
 
   navigateToCreateSales():void{
