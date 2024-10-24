@@ -8,8 +8,17 @@
           <!-- General Section -->
           <div class="general-info">
             <div class="left-side">
-              Sell-to Customer No.
-              <input id="sellToCustomerNo" type="text" [(ngModel)]="salesOrder.sellToCustomerNo" name="sellToCustomerNo"/>
+              <label for="sellToCustomerNo">Sell-to Customer No.</label>
+              <ng-select
+                [items]="customers"
+                bindLabel="name"
+                bindValue="customerNo"
+                [(ngModel)]="salesOrder.sellToCustomerNo"
+                placeholder="Select a customer"
+                [searchable]="true"
+                [typeahead]="typeahead"
+                (change)="onCustomerSelect($event)">
+              </ng-select>
       
              Sell-to Contact No.
               <input id="sellToContactNo" type="text" [(ngModel)]="salesOrder.sellToContactNo" name="sellToContactNo"/>

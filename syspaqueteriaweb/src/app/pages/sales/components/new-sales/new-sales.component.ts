@@ -1,35 +1,42 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-sales',
   templateUrl: './new-sales.component.html',
   styleUrl: './new-sales.component.css'
 })
-export class NewSalesComponent {
-  salesOrder = {
-    sellToCustomerNo: '10001',
-    sellToContactNo: 'CT00007',
-    sellToCustomerName: 'The Cannon Group PLC',
-    sellToAddress: '192 Market Square',
-    sellToCity: 'Birmingham',
-    sellToPostCode: 'B27 4KT',
-    sellToContact: 'Mr. Andy Teal',
-    orderDate: '2017-01-26',
-    salespersonCode: 'PS',
-    campaignNo: '',
-    responsibilityCenter: 'BIRMINGHAM',
-    status: 'open',
-    lines: [
-      { no: '1', description: 'Item 1', locationCode: '', quantity: 10, unitOfMeasure: 'pcs' },
-      { no: '2', description: 'Item 2', locationCode: '', quantity: 5, unitOfMeasure: 'pcs' }
-    ],
-    invoiceDiscountAmount: 0,
-    totalExclVAT: 0,
-    totalVAT: 0,
-    totalInclVAT: 0
-  };
+export class NewSalesComponent implements OnInit {
 
 
+  salesOrder: any = {}; // Tu modelo de la orden de ventas
+  customers: any[] = []; // Listado de clientes
+  typeahead = new Subject<string>(); // Para manejar el evento de búsqueda en el select
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    // Configura el comportamiento del typeahead (buscador en el select)
+    this.typeahead.pipe(
+      debounceTime(300),  // Espera 300ms después del último input
+      distinctUntilChanged(),
+      switchMap(term => this.searchCustomers(term)) // Llama a la API de búsqueda
+    ).subscribe(customers => this.customers = customers); // Actualiza la lista de clientes
+  }
+
+  // Método para obtener clientes desde la API
+  searchCustomers(term: string): Observable<any[]> {
+    if (!term.trim()) {
+      return this.http.get<any[]>('http://54.227.145.10/api/cliente/listar-todo'); // Aquí coloca la URL de tu API
+    }
+    return this.http.get<any[]>(`https://api.example.com/customers?search=${term}`);
+  }
+
+  // Maneja la selección de cliente
+  onCustomerSelect(customer: any) {
+    console.log('Customer selected:', customer);
+  }
 
 
   currentDate: string = '';

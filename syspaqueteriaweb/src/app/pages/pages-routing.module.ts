@@ -22,6 +22,7 @@ import { SuppliersComponent } from './suppliers/suppliers.component';
 import { CreateSuppliersComponent } from './suppliers/component/create-suppliers/create-suppliers.component';
 import { HomeSuppliersComponent } from './suppliers/component/home-suppliers/home-suppliers.component';
 
+
 const routes: Routes = [
   {
     path: 'dashboard',

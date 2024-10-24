@@ -19,10 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { EditCustomerComponent } from './customers/components/edit-customer/edit-customer.component';
 import { EditUserComponent } from './users/components/edit-user/edit-user.component';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; // Si estás usando <mat-input>
-import { MatSelectModule } from '@angular/material/select'; // Si estás usando <mat-select>
-import { MatCardModule } from '@angular/material/card';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { HomeSalesComponent } from './sales/components/home-sales/home-sales.component';
 import { PendingsSalesComponent } from './sales/components/pendings-sales/pendings-sales.component';
 import { NewSalesComponent } from './sales/components/new-sales/new-sales.component'; // Importa MatCardModule
@@ -58,10 +55,7 @@ import { HomeSuppliersComponent } from './suppliers/component/home-suppliers/hom
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCardModule
+    NgSelectModule
   ],
   providers: [
     provideHttpClient(withFetch())
