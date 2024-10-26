@@ -6,7 +6,7 @@
           <h5>General</h5>
           <div class="general-info">
             <div class="left-side">
-              <label>Cliente No.</label>
+              Cliente No.
               <ng-select
                 [items]="customers"
                 bindLabel="fullName"
@@ -18,39 +18,39 @@
                 (change)="onCustomerSelect($event)">
               </ng-select>
               
-              <label>Nombre de cliente.</label>
+              Nombre de cliente.
               <input id="nombresCliente" type="text" formControlName="nombresCliente" required />
               
-              <label>NIT</label>
+             NIT
               <input id="nit" type="text" formControlName="nit" required />
               
-              <label>Dirección de cliente.</label>
+             Dirección de cliente.
               <input id="direccionCliente" type="text" formControlName="direccionCliente" required />
               
-              <label>Número de contacto.</label>
+             Número de contacto.
               <input id="telefonoCliente" type="text" formControlName="telefonoCliente" required />
               
-              <label>Correo electrónico.</label>
+             Correo electrónico.
               <input id="correoCliente" type="email" formControlName="correoCliente" required />
             </div>
         
             <div class="right-side">
-              <label>Categoría de cliente.</label>
+            Categoría de cliente.
               <input id="categoriaCliente" type="text" formControlName="categoriaCliente" required />
               
-              <label>Departamento.</label>
+              Departamento.
               <input id="departamento" type="text" formControlName="departamento" required />
               
-              <label>Municipio.</label>
+            Municipio.
               <input id="municipio" type="text" formControlName="municipio" required />
               
-              <label>Términos de venta.</label>
+              Términos de venta.
               <input id="TipoVenta" type="text" formControlName="TipoVenta" required />
               
-              <label>Fecha de registro.</label>
+              Fecha de registro.
               <input id="FechaVenta" type="date" formControlName="FechaVenta" required />
               
-              <label>Status</label>
+              Status.
               <select id="status" formControlName="status" required>
                 <option value="open">Open</option>
                 <option value="closed">Closed</option>
@@ -69,31 +69,42 @@
                 <th>Unit of Measure</th>
               </tr>
             </thead>
-            <tbody formArrayName="lines">
+            <tbody formArrayName="right-side totals">
               <tr *ngFor="let line of lines.controls; let i = index" [formGroupName]="i">
-                <td><input type="text" formControlName="no" required /></td>
+                <td>
+                  <ng-select
+                [items]="customers"
+                bindLabel="fullName"
+                bindValue="codigoCliente"
+                formControlName="codigoCliente"
+                id="codigoCliente"
+                placeholder="Select a customer"
+                [searchable]="true"
+                (change)="onCustomerSelect($event)">
+              </ng-select>
+                </td>
                 <td><input type="text" formControlName="description" required /></td>
                 <td><input type="text" formControlName="locationCode" required /></td>
-                <td><input type="number" formControlName="quantity" required min="1" /></td>
+                <td><input type="number" formControlName="Cantidad" required min="1" /></td>
                 <td><input type="text" formControlName="unitOfMeasure" required /></td>
               </tr>
             </tbody>
           </table>
           <button (click)="addLine()">Agregar línea</button>
-        
-          <div class="totals">
-            Total Venta.
-            <input id="TotalVenta" type="number" formControlName="TotalVenta" required min="0" />
+          <div class="general-info">
+            <div class="right-side">
+             
+            </div>
+            <div class="left-side">
+              Total Venta.
+              <input id="TotalVenta" type="number" formControlName="TotalVenta" placeholder="Q." required min="0" />
+              
             
-            <label>Total Excl. VAT (GBP)</label>
-            <input id="totalExclVAT" type="number" formControlName="totalExclVAT" required min="0" />
-            
-            <label>Total VAT (GBP)</label>
-            <input id="totalVAT" type="number" formControlName="totalVAT" required min="0" />
-            
-            <label>Total Incl. VAT (GBP)</label>
-            <input id="totalInclVAT" type="number" formControlName="totalInclVAT" required min="0" />
+            </div>
+
           </div>
+
+        
         
           <!-- Botón de envío -->
           <button type="submit">Enviar</button>
