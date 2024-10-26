@@ -19,7 +19,7 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.customerForm = this.fb.group({
       clienteID:[null],
-      codigoCliente:['', Validators.required],
+      codigoCliente:[''],
       nombresCliente:['',Validators.required], //Para nombre de cliente a facturar
       apellidosCliente:['', Validators.required], //Para nombre de comercio
       estadoCliente:['', Validators.required], // EstadoCliente
@@ -40,6 +40,7 @@ export class CreateCustomerComponent implements OnInit {
     onSubmit(): void {
 
       if(this.customerForm.valid){
+        console.log("Formulario valido");
         const customerdataForm = this.customerForm.value;
         this.customerService.setCustomer(customerdataForm).subscribe((response:any)=>{
 
@@ -52,7 +53,14 @@ export class CreateCustomerComponent implements OnInit {
         console.log("Error al crear el cliente ", error);
       });
       }else{
+        console.log("Formulario no valido");
         this.customerForm.markAllAsTouched();
+        Object.keys(this.customerForm.controls).forEach(controlName => {
+          const control = this.customerForm.get(controlName);
+          if (control && control.invalid) {
+              console.log(`Control '${controlName}' no válido. Errores:`, control.errors);
+          }
+      });
       }
 
   }

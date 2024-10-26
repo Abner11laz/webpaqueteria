@@ -18,6 +18,7 @@ export class CustomerService {
  
 
   setCustomer(customerData:any):Observable<any>{
+    console.log("Click");
     return this.httpClient.post(`${this.baseUriApi}/crud`,customerData);
 
   }

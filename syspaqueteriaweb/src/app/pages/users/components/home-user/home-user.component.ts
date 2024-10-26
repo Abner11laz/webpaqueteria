@@ -42,11 +42,12 @@ selectedUser: any = null;
     navigateToEditUser(): void {
       if (this.selectedUser > 0) {
         console.log("Has hecho clic en el usuario: ", this.selectedUser);
-        this.router.navigate(['./users/edit-user', this.selectedUser], { relativeTo: this.route });
+        this.router.navigate(['./edit-user', this.selectedUser], { relativeTo: this.route });
       }
     }
     navigateToCreateUser() {
-      this.router.navigate(['./users/create-user'], { relativeTo: this.route });
+     
+      this.router.navigate(['./create-user'], { relativeTo: this.route });
     }
 
 }

@@ -40,6 +40,7 @@ export class HomeSuppliersComponent  implements OnInit {
     this.activeTab = tab;
   }
   navigateToCreateSuppliers() {
+    this.router.navigate(['./create-suppliers'], { relativeTo: this.route });
    // this.router.navigate(['./suppliers/create'], { relativeTo: this.route });
   }
 }

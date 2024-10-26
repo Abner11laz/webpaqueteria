@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit{
   });
   }
   navigateToCreateCustomer() {
-    this.router.navigate(['./customers/create-customer'], { relativeTo: this.route });
+    this.router.navigate(['./create-customer'], { relativeTo: this.route });
+   
   }
 
   selectedCustomer: number = 0;
@@ -76,7 +77,7 @@ export class HomeComponent implements OnInit{
   navigateToEditCustomer(): void {
     if (this.selectedCustomer > 0) {
       console.log("Has hecho clic en el id: ", this.selectedCustomer);
-      this.router.navigate(['./customers/edit-customer', this.selectedCustomer], { relativeTo: this.route });
+      this.router.navigate(['./edit-customer', this.selectedCustomer], { relativeTo: this.route });
     } else {
       console.log("No se ha seleccionado ningún cliente");
     }

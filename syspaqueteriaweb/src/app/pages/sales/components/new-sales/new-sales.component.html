@@ -10,9 +10,9 @@
               <ng-select
                 [items]="customers"
                 bindLabel="fullName"
-                bindValue="codigoCliente"
-                formControlName="codigoCliente"
-                id="codigoCliente"
+                bindValue="clienteID"
+                formControlName="clienteID"
+                id="clienteID"
                 placeholder="Select a customer"
                 [searchable]="true"
                 (change)="onCustomerSelect($event)">
@@ -62,35 +62,35 @@
           <table>
             <thead>
               <tr>
-                <th>No.</th>
-                <th>Description</th>
-                <th>Location Code</th>
-                <th>Quantity</th>
-                <th>Unit of Measure</th>
+                <th>Producto No.</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+       
               </tr>
             </thead>
-            <tbody formArrayName="right-side totals">
+            <tbody formArrayName="lines">
               <tr *ngFor="let line of lines.controls; let i = index" [formGroupName]="i">
                 <td>
                   <ng-select
-                [items]="customers"
-                bindLabel="fullName"
-                bindValue="codigoCliente"
-                formControlName="codigoCliente"
-                id="codigoCliente"
-                placeholder="Select a customer"
+                [items]="products"
+                bindLabel="fullDescription"
+                bindValue="productoID"
+                formControlName="productoID"
+                id="productoID"
+                placeholder="Selecciona un producto."
                 [searchable]="true"
-                (change)="onCustomerSelect($event)">
+                (change)="onProductSelect($event, i)">
               </ng-select>
                 </td>
-                <td><input type="text" formControlName="description" required /></td>
-                <td><input type="text" formControlName="locationCode" required /></td>
-                <td><input type="number" formControlName="Cantidad" required min="1" /></td>
-                <td><input type="text" formControlName="unitOfMeasure" required /></td>
+                <td><input type="text" formControlName="descripcion" required /></td>
+                <td><input type="text" formControlName="precio" required /></td>
+                <td><input type="number" formControlName="quantity" (input)="updateLineAmount(i)" required min="1" /></td>
+                
               </tr>
             </tbody>
           </table>
-          <button (click)="addLine()">Agregar línea</button>
+          <button type="button" (click)="addLine()">Agregar línea</button>
           <div class="general-info">
             <div class="right-side">
              
